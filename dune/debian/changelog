@@ -1,0 +1,68 @@
+dune (1.9.3-1) UNRELEASED; urgency=medium
+
+  * Non-maintainer upload.
+  * New upstream release
+
+ -- Helge Bahmann <hcb@chaoticmind.net>  Sat, 09 Nov 2019 11:00:12 +0100
+
+dune (1.6.2-2) unstable; urgency=medium
+
+  * Add Breaks+Replaces: whitedune (<< 0.30.10-2.2) (Closes: #919622)
+
+ -- Stéphane Glondu <glondu@debian.org>  Fri, 18 Jan 2019 17:50:45 +0100
+
+dune (1.6.2-1) unstable; urgency=medium
+
+  * New upstream release
+    - add new binary package libdune-ocaml-dev
+  * Update debian/watch
+  * Update Vcs-*
+  * Bump Standards-Version to 4.2.1 (no changes)
+
+ -- Stéphane Glondu <glondu@debian.org>  Sat, 08 Dec 2018 15:27:49 +0100
+
+dune (1.0~beta20-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version (2018-04-10)
+    + Fix FTBFS on bytecode-only archs (Closes: #894088)
+  * debian/rules: Keep libdir to /usr/lib/ocaml (Closes: #894545)
+  * Bump Standards-Version to 4.1.4.
+    No change required.
+  * Switch to debhelper 11
+  * Package transition to “Dune” (Closes: #896466)
+    Upstream renamed the project
+
+ -- Nicolas Braud-Santoni <nicolas@braud-santoni.eu>  Sat, 21 Apr 2018 12:59:57 +0200
+
+jbuilder (1.0~beta19-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream release
+    + Updated d/rules to call ./configure manually because it errors
+      on extra arguments
+
+ -- Andy Li <andy@onthewings.net>  Mon, 19 Mar 2018 15:21:27 +0800
+
+jbuilder (1.0~beta18-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream release
+    * Fix library builds on OCaml bytecode-only architectures
+      (Closes: #881770)
+  * Update d/jbuilder.opam-install and d/jbuilder.manpages
+  * Bump Standards-Version to 4.1.3 (no changes)
+
+ -- Andy Li <andy@onthewings.net>  Wed, 28 Feb 2018 16:36:09 +0800
+
+jbuilder (1.0~beta14-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Stéphane Glondu <glondu@debian.org>  Thu, 12 Oct 2017 10:18:46 +0200
+
+jbuilder (1.0~beta11-1) unstable; urgency=medium
+
+  * Initial release (Closes: #870130)
+
+ -- Stéphane Glondu <glondu@debian.org>  Sun, 30 Jul 2017 10:53:53 +0200

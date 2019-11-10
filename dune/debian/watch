@@ -1,0 +1,3 @@
+version=3
+opts=uversionmangle=s/\.beta/~beta/ \
+https://github.com/ocaml/dune/releases .*/dune-(.*)\.tbz

@@ -1,0 +1,2 @@
+# jbuilder is transitional, but not a library
+jbuilder binary: transitional-package-should-be-oldlibs-optional

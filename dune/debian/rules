@@ -1,0 +1,31 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+#export DH_OPTIONS=-v
+
+%:
+	dh $@ --with ocaml
+
+.PHONY: override_dh_auto_configure
+override_dh_auto_configure:
+	./configure --libdir /usr/lib/ocaml
+
+.PHONY: override_dh_auto_build
+override_dh_auto_build:
+	ocaml bootstrap.ml
+	./boot.exe
+
+.PHONY: override_dh_auto_clean
+override_dh_auto_clean:
+	rm -rf _build boot.exe src/setup.ml dune.install
+	find -name .merlin -delete
+
+.PHONY: override_dh_auto_test
+override_dh_auto_test:
+# Upstream tests assume opam is installed; skip them
+
+.PHONY: override_dh_missing
+override_dh_missing:
+	dh_missing --fail-missing

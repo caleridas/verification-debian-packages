@@ -1,0 +1,60 @@
+Source: dune
+Section: ocaml
+Priority: optional
+Maintainer: Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>
+Uploaders: Stéphane Glondu <glondu@debian.org>
+Build-Depends:
+ ocaml-nox,
+ ocaml-findlib,
+ dh-ocaml,
+ debhelper (>= 11)
+Standards-Version: 4.2.1
+Homepage: https://github.com/janestreet/jbuilder
+Vcs-Git: https://salsa.debian.org/ocaml-team/jbuilder.git
+Vcs-Browser: https://salsa.debian.org/ocaml-team/jbuilder
+
+Package: dune
+Architecture: any
+Breaks: jbuilder (<< 1.0~beta20-1), whitedune (<< 0.30.10-2.2)
+Replaces: jbuilder (<< 1.0~beta20-1), whitedune (<< 0.30.10-2.2)
+Provides: jbuilder
+Depends:
+ ${ocaml:Depends},
+ ${shlibs:Depends},
+ ${misc:Depends}
+Description: composable build system for OCaml projects
+ Dune is a build system designed for OCaml/Reason projects
+ only. It focuses on providing the user with a consistent experience
+ and takes care of most of the low-level details of OCaml
+ compilation. All you have to do is provide a description of your
+ project and Dune will do the rest.
+
+Package: libdune-ocaml-dev
+Architecture: any
+Depends:
+ ${ocaml:Depends},
+ ${shlibs:Depends},
+ ${misc:Depends}
+Suggests:
+ ocaml-findlib
+Description: composable build system for OCaml projects (library)
+ Dune is a build system designed for OCaml/Reason projects
+ only. It focuses on providing the user with a consistent experience
+ and takes care of most of the low-level details of OCaml
+ compilation. All you have to do is provide a description of your
+ project and Dune will do the rest.
+ .
+ This package contains the library.
+
+Package: jbuilder
+Architecture: all
+Depends: dune, ${misc:Depends}
+Description: composable build system for OCaml projects -- transitional package
+ Dune is a build system designed for OCaml/Reason projects
+ only. It focuses on providing the user with a consistent experience
+ and takes care of most of the low-level details of OCaml
+ compilation. All you have to do is provide a description of your
+ project and Dune will do the rest.
+ .
+ Dune was previously called jbuilder; this is a transitional package,
+ which can be safely removed.
