@@ -1,0 +1,21 @@
+From: Benjamin Barenblat <bbaren@debian.org>
+Subject: Disable tests which require ocamlopt
+Forwarded: not-needed
+
+Disable unit tests. They require ocamlopt, which isn't available on all
+Debian architectures, and Gaëtan Gilbert says that "they don't test much
+yet" anyway.
+
+Also disable .vio tests, as they run afoul
+of https://github.com/coq/coq/issues/9141.
+--- a/test-suite/Makefile
++++ b/test-suite/Makefile
+@@ -102,7 +102,7 @@
+   coqdoc ssr
+ 
+ # All subsystems
+-SUBSYSTEMS := $(VSUBSYSTEMS) misc bugs ide vio coqchk coqwc coq-makefile tools unit-tests
++SUBSYSTEMS := $(VSUBSYSTEMS) misc bugs ide coqchk coqwc coq-makefile tools
+ 
+ PREREQUISITELOG = prerequisite/admit.v.log			\
+   prerequisite/make_local.v.log prerequisite/make_notation.v.log \

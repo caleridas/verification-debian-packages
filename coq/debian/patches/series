@@ -1,0 +1,9 @@
+remove-heavy-tests.patch
+remove-time-sensitive-tests.patch
+remove-tests-that-need-coqlib.patch
+avoid-usr-bin-env.patch
+python-scripts-libraries.patch
+skip-dot-pc.patch
+verbose-build.patch
+remove-bytecode-failing-tests.patch
+json-extract-constant-inductive.patch

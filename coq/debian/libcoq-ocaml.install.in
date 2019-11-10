@@ -1,0 +1,45 @@
+usr/lib/coq/dllcoqrun.so @OCamlDllDir@
+usr/lib/coq/plugins/rtauto/rtauto_plugin.cmo
+usr/lib/coq/plugins/extraction/extraction_plugin.cmo
+usr/lib/coq/plugins/cc/cc_plugin.cmo
+usr/lib/coq/plugins/btauto/btauto_plugin.cmo
+usr/lib/coq/plugins/funind/recdef_plugin.cmo
+usr/lib/coq/plugins/derive/derive_plugin.cmo
+usr/lib/coq/plugins/setoid_ring/newring_plugin.cmo
+usr/lib/coq/plugins/ltac/ltac_plugin.cmo
+usr/lib/coq/plugins/ltac/tauto_plugin.cmo
+usr/lib/coq/plugins/nsatz/nsatz_plugin.cmo
+usr/lib/coq/plugins/micromega/micromega_plugin.cmo
+usr/lib/coq/plugins/romega/romega_plugin.cmo
+usr/lib/coq/plugins/omega/omega_plugin.cmo
+usr/lib/coq/plugins/firstorder/ground_plugin.cmo
+usr/lib/coq/plugins/quote/quote_plugin.cmo
+usr/lib/coq/plugins/syntax/int31_syntax_plugin.cmo
+usr/lib/coq/plugins/syntax/numeral_notation_plugin.cmo
+usr/lib/coq/plugins/syntax/r_syntax_plugin.cmo
+usr/lib/coq/plugins/syntax/ascii_syntax_plugin.cmo
+usr/lib/coq/plugins/syntax/string_syntax_plugin.cmo
+usr/lib/coq/plugins/ssr/ssreflect_plugin.cmo
+usr/lib/coq/plugins/ssrmatching/ssrmatching_plugin.cmo
+DYN: usr/lib/coq/plugins/rtauto/rtauto_plugin.cmxs
+DYN: usr/lib/coq/plugins/extraction/extraction_plugin.cmxs
+DYN: usr/lib/coq/plugins/cc/cc_plugin.cmxs
+DYN: usr/lib/coq/plugins/btauto/btauto_plugin.cmxs
+DYN: usr/lib/coq/plugins/funind/recdef_plugin.cmxs
+DYN: usr/lib/coq/plugins/derive/derive_plugin.cmxs
+DYN: usr/lib/coq/plugins/setoid_ring/newring_plugin.cmxs
+DYN: usr/lib/coq/plugins/ltac/ltac_plugin.cmxs
+DYN: usr/lib/coq/plugins/ltac/tauto_plugin.cmxs
+DYN: usr/lib/coq/plugins/nsatz/nsatz_plugin.cmxs
+DYN: usr/lib/coq/plugins/micromega/micromega_plugin.cmxs
+DYN: usr/lib/coq/plugins/romega/romega_plugin.cmxs
+DYN: usr/lib/coq/plugins/omega/omega_plugin.cmxs
+DYN: usr/lib/coq/plugins/firstorder/ground_plugin.cmxs
+DYN: usr/lib/coq/plugins/quote/quote_plugin.cmxs
+DYN: usr/lib/coq/plugins/syntax/r_syntax_plugin.cmxs
+DYN: usr/lib/coq/plugins/syntax/int31_syntax_plugin.cmxs
+DYN: usr/lib/coq/plugins/syntax/numeral_notation_plugin.cmxs
+DYN: usr/lib/coq/plugins/syntax/ascii_syntax_plugin.cmxs
+DYN: usr/lib/coq/plugins/syntax/string_syntax_plugin.cmxs
+DYN: usr/lib/coq/plugins/ssr/ssreflect_plugin.cmxs
+DYN: usr/lib/coq/plugins/ssrmatching/ssrmatching_plugin.cmxs

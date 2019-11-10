@@ -1,0 +1,20 @@
+--------------------------
++ Coq package for Debian +
+--------------------------
+
+Binary (in)compatibility
+------------------------
+The compiled libraries of Coq (the *.vo) are not expected to be backward or
+forward compatible between releases (including plX releases). In case of a new
+upstream release, your Coq files should be recompiled.
+
+
+Coq frontends
+-------------
+For interactive use of coqtop, we suggest
+ - a readline editor, such as ledit or rlwrap (or anything that provides the
+   readline-editor virtual packages);
+ - or the Proof-General (x)emacs mode, available in the proofgeneral
+   package.
+
+ -- Benjamin Barenblat <bbaren@debian.org>, Mon, 24 Dec 2018 15:11:23 -0500

@@ -1,0 +1,43 @@
+From: Benjamin Barenblat <bbaren@debian.org>
+Subject: Remove heavyweight tests
+Forwarded: not-needed
+
+Remove tests that use too much RAM or time to run on a buildd. (The MIPS
+buildd is frequently the culprit, as MIPS lacks an OCaml native
+compiler.)
+--- a/test-suite/bugs/closed/5127.v
++++ /dev/null
+@@ -1,15 +0,0 @@
+-Fixpoint arrow (n: nat) :=
+-  match n with
+-  | S n => bool -> arrow n
+-  | O => bool
+-  end.
+-
+-Fixpoint apply (n : nat) : arrow n -> bool :=
+-  match n return arrow n -> bool with
+-  | S n => fun f => apply _ (f true)
+-  | O => fun x => x
+-  end.
+-
+-Axiom f : arrow 10000.
+-Definition v : bool := Eval compute in apply _ f.
+-Definition w : bool := Eval vm_compute in v.
+--- a/test-suite/success/Nsatz.v
++++ b/test-suite/success/Nsatz.v
+@@ -462,6 +462,7 @@ idtac "chords".
+ (*Finished transaction in 4. secs (3.959398u,0.s)*)
+ Qed.
+ 
++(*
+ Lemma Ceva: forall A B C D E F M:point,
+   collinear M A D -> collinear M B E -> collinear M C F ->
+   collinear B C D -> collinear E A C -> collinear F A B ->
+@@ -473,6 +474,7 @@ idtac "Ceva".
+ Time nsatz.
+ (*Finished transaction in 105. secs (104.121171u,0.474928s)*)
+ Qed.
++*)
+ 
+ Lemma bissectrices: forall A B C M:point,
+   equaltangente C A M M A B ->

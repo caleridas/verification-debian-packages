@@ -1,0 +1,13 @@
+From: Benjamin Barenblat <bbaren@debian.org>
+Subject: Ignore .pc directory when building
+Forwarded: no
+--- a/Makefile
++++ b/Makefile
+@@ -53,6 +53,7 @@
+   -name '.git' -o \
+   -name '.bzr' -o \
+   -name 'debian' -o \
++  -name '.pc' -o \
+   -name "$${GIT_DIR}" -o \
+   -name '_build' -o \
+   -name '_build_ci' -o \

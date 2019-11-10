@@ -1,0 +1,32 @@
+From: Benjamin Barenblat <bbaren@debian.org>
+Subject: Avoid invoking /usr/bin/env
+Forwarded: not-needed
+
+Per Debian Python policy [1], use `/usr/bin/python3` rather than
+`/usr/bin/env python` to refer to the system Python (3) interpreter.
+
+[1] https://www.debian.org/doc/packaging-manuals/python-policy/python.html#interpreter_loc
+--- a/tools/make-both-single-timing-files.py
++++ b/tools/make-both-single-timing-files.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ import sys
+ from TimeFileMaker import *
+ 
+--- a/tools/make-both-time-files.py
++++ b/tools/make-both-time-files.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ import sys
+ from TimeFileMaker import *
+ 
+--- a/tools/make-one-time-file.py
++++ b/tools/make-one-time-file.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ import sys
+ from TimeFileMaker import *
+ 

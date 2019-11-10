@@ -1,0 +1,2 @@
+# False positive spelling error.
+coq binary: spelling-error-in-binary usr/bin/coqwc tage stage

@@ -1,0 +1,29 @@
+#!/usr/bin/dh-exec
+usr/bin/coq*worker*
+usr/bin/coqc*
+usr/bin/coqdep*
+usr/bin/coqdoc*
+usr/bin/coq_makefile*
+usr/bin/coqpp*
+usr/bin/coq-tex*
+usr/bin/coqtop*
+usr/bin/coqwc*
+usr/bin/coqworkmgr*
+usr/lib/coq/plugins/micromega/csdpcert
+usr/lib/coq/tools/CoqMakefile.in
+usr/lib/coq/tools/TimeFileMaker.py
+usr/lib/coq/tools/coqdoc/coqdoc.css
+usr/lib/coq/tools/coqdoc/coqdoc.sty
+usr/lib/coq/tools/make-both-single-timing-files.py => usr/lib/coq/tools/make-both-single-timing-files
+usr/lib/coq/tools/make-both-time-files.py => usr/lib/coq/tools/make-both-time-files
+usr/lib/coq/tools/make-one-time-file.py => usr/lib/coq/tools/make-one-time-file
+usr/share/man/man1/coqc*
+usr/share/man/man1/coqdep*
+usr/share/man/man1/coqdoc*
+usr/share/man/man1/coq_makefile*
+usr/share/man/man1/coq-tex*
+usr/share/man/man1/coqtop*
+usr/share/man/man1/coqwc*
+usr/share/texmf/tex/latex/misc/coqdoc.sty
+debian/coq.xpm                          usr/share/pixmaps
+debian/coqvars.mk                       usr/share/coq

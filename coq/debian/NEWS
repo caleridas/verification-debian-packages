@@ -1,0 +1,8 @@
+coq (8.2~rc2+dfsg-1) experimental; urgency=low
+
+    The Coq library for programming in OCaml is now in its own binary
+    package, libcoq-ocaml-dev, along with coqmktop. The theories have been
+    moved from coq-libs to the more expressive name coq-theories.
+
+ -- Stéphane Glondu <glondu@debian.org>  Mon, 02 Feb 2009 09:48:03 +0100
+

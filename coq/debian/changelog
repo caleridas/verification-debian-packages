@@ -1,0 +1,858 @@
+coq (8.9.1-1) UNRELEASED; urgency=medium
+
+  * Non-maintainer upload.
+  * Re-package including coqide based on 8.6.3 package scripts.
+
+ -- Helge Bahmann <hcb@chaoticmind.net>  Sat, 12 Oct 2019 14:10:02 +0200
+
+coq (8.9.0-1) unstable; urgency=high
+
+  * New upstream release
+  * Set CAML_LD_LIBRARY_PATH and COQLIB correctly during building
+    (Closes: #919462)
+  * Coq no longer ships an Emacs mode; users should migrate to Proof
+    General (Closes: #736761, #854147, #877938)
+
+ -- Benjamin Barenblat <bbaren@debian.org>  Wed, 06 Feb 2019 12:41:09 -0500
+
+coq (8.8.2-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #910840)
+  * Add Benjamin Barenblat to uploaders
+  * Update debian/watch for upstream's transition to GitHub (Closes: #902903)
+  * Stop distributing CoqIDE (Closes: #916369)
+  * coqmktop(1) has been deleted; users should migrate to ocamlfind(1)
+
+ -- Benjamin Barenblat <bbaren@debian.org>  Sun, 06 Jan 2019 23:07:04 -0500
+
+coq (8.6-5) unstable; urgency=medium
+
+  * Recompile with OCaml 4.05.0
+  * Remove unused Lintian overrides
+  * Remove menu files
+  * Update Vcs-*
+
+ -- Stéphane Glondu <glondu@debian.org>  Tue, 26 Sep 2017 11:08:52 +0200
+
+coq (8.6-4) unstable; urgency=medium
+
+  * coq_makefile needs ocamlfind in order to work
+
+ -- Enrico Tassi <gareuselesinge@debian.org>  Thu, 29 Dec 2016 23:45:47 +0100
+
+coq (8.6-3) unstable; urgency=medium
+
+  * 5127.v fails on mips, disabling
+
+ -- Enrico Tassi <gareuselesinge@debian.org>  Thu, 29 Dec 2016 08:58:35 +0100
+
+coq (8.6-2) unstable; urgency=medium
+
+  * Disable some tests with hardcoded timeout to fix FTBFS on
+    slow machines
+
+ -- Enrico Tassi <gareuselesinge@debian.org>  Wed, 28 Dec 2016 18:19:29 +0100
+
+coq (8.6-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Enrico Tassi <gareuselesinge@debian.org>  Tue, 27 Dec 2016 16:53:39 +0100
+
+coq (8.5-2) unstable; urgency=medium
+
+  * patch: disable test 4429 (timeout too strict for slow architectures)
+
+ -- Enrico Tassi <gareuselesinge@debian.org>  Thu, 28 Jan 2016 11:47:07 +0100
+
+coq (8.5-1) unstable; urgency=medium
+
+  * New upstream release
+  * patch: disable test 4366 (timeout too strict for slow architectures)
+
+ -- Enrico Tassi <gareuselesinge@debian.org>  Tue, 26 Jan 2016 16:59:05 +0100
+
+coq (8.5~beta3+dfsg-2) experimental; urgency=medium
+
+  * Option -no-native-compiler now called -native-compiler no
+
+ -- Enrico Tassi <gareuselesinge@debian.org>  Sat, 14 Nov 2015 14:59:04 +0100
+
+coq (8.5~beta3+dfsg-1) experimental; urgency=medium
+
+  * New upstream release
+
+ -- Enrico Tassi <gareuselesinge@debian.org>  Fri, 13 Nov 2015 11:27:35 +0100
+
+coq (8.5~beta2+dfsg-2) experimental; urgency=medium
+
+  * Enable native compiler only on amd64 and i386
+  * Enable 'make test-suite' target
+
+ -- Enrico Tassi <gareuselesinge@debian.org>  Mon, 20 Jul 2015 09:51:21 +0200
+
+coq (8.5~beta2+dfsg-1) experimental; urgency=medium
+
+  * New upstream release
+  * Add Enrico Tassi to uploaders
+  * Disable patch for lockf on Hurd (not needed anymore)
+  * coq-theories is now arch any, since it contains .coq-native/ directories
+    (i.e. cmxs files for native compute)
+  * coq depends on coq-theories binary:Version
+  * lintian-overrides for coq-native/*cmx* and plugins/*cmxs files
+    (hardening-no-relro)
+  * Build depend on liblablgtksourceview2-ocaml-dev
+
+ -- Enrico Tassi <gareuselesinge@debian.org>  Wed, 15 Jul 2015 11:36:30 +0200
+
+coq (8.4pl4dfsg-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #755953)
+  * Switch debian/copyright to Format 1.0
+  * Bump Standards-Version to 3.9.5
+  * Bump debhelper compat level to 9
+
+ -- Stéphane Glondu <glondu@debian.org>  Sun, 27 Jul 2014 15:25:03 +0200
+
+coq (8.4pl3dfsg-1) unstable; urgency=medium
+
+  * New upstream release
+  * Update README.Debian (Closes: #680248)
+
+ -- Stéphane Glondu <glondu@debian.org>  Sun, 19 Jan 2014 16:16:36 +0100
+
+coq (8.4pl2dfsg-4) unstable; urgency=low
+
+  * Upload to unstable
+
+ -- Stéphane Glondu <glondu@debian.org>  Tue, 03 Dec 2013 19:54:49 +0100
+
+coq (8.4pl2dfsg-3) experimental; urgency=low
+
+  * Compile with OCaml 4.01.0
+  * Disable micromega tests on Hurd (because of missing lockf)
+
+ -- Stéphane Glondu <glondu@debian.org>  Fri, 22 Nov 2013 14:38:00 +0100
+
+coq (8.4pl2dfsg-2) experimental; urgency=low
+
+  * Compile with OCaml >= 4
+  * Update Vcs-*
+
+ -- Stéphane Glondu <glondu@debian.org>  Fri, 26 Jul 2013 14:17:30 +0200
+
+coq (8.4pl2dfsg-1) unstable; urgency=low
+
+  * New upstream release
+  * Upload to unstable
+
+ -- Stéphane Glondu <glondu@debian.org>  Wed, 08 May 2013 18:10:14 +0200
+
+coq (8.4pl1dfsg-1) experimental; urgency=low
+
+  * New upstream release
+    - 0002-Fix-use-of-HASNATDYNLINK-in-coq_makefile-output.patch
+      has been merged upstream
+    - add ocaml-findlib to Build-Depends
+
+ -- Stéphane Glondu <glondu@debian.org>  Sat, 29 Dec 2012 15:56:53 +0100
+
+coq (8.4dfsg-2) experimental; urgency=low
+
+  * Upstream bugfix: Fix use of $(HASNATDYNLINK) in coq_makefile output
+
+ -- Stéphane Glondu <glondu@debian.org>  Sat, 22 Sep 2012 12:43:13 +0200
+
+coq (8.4dfsg-1) experimental; urgency=low
+
+  * New upstream release
+
+ -- Stéphane Glondu <glondu@debian.org>  Mon, 20 Aug 2012 18:33:45 +0200
+
+coq (8.4~gamma0+really8.4beta2+dfsg-1) experimental; urgency=low
+
+  * New upstream beta release
+
+ -- Stéphane Glondu <glondu@debian.org>  Tue, 05 Jun 2012 07:38:25 +0200
+
+coq (8.4~beta+dfsg-4) experimental; urgency=low
+
+  * Recompile with camlp5 6.05 (no changes)
+
+ -- Stéphane Glondu <glondu@debian.org>  Fri, 06 Apr 2012 10:04:06 +0200
+
+coq (8.4~beta+dfsg-3) experimental; urgency=low
+
+  * Replace proofgeneral-coq by proofgeneral in dependencies
+  * Disable a test that uses too much memory, causing random FTBFS
+
+ -- Stéphane Glondu <glondu@debian.org>  Sun, 15 Jan 2012 12:37:23 +0100
+
+coq (8.4~beta+dfsg-2) experimental; urgency=low
+
+  * Fix a typo that caused decl_mode_plugin.cmxs not being installed,
+    making coqtop.opt useless
+  * Fix an ordering issue that was causing a test to fail in bytecode
+
+ -- Stéphane Glondu <glondu@debian.org>  Sat, 14 Jan 2012 11:11:48 +0100
+
+coq (8.4~beta+dfsg-1) experimental; urgency=low
+
+  * New upstream beta release
+
+ -- Stéphane Glondu <glondu@debian.org>  Thu, 12 Jan 2012 18:53:08 +0100
+
+coq (8.3.pl4+dfsg-2) unstable; urgency=low
+
+  * Recompile with camlp5 6.06 (no changes)
+
+ -- Stéphane Glondu <glondu@debian.org>  Wed, 06 Jun 2012 07:35:26 +0200
+
+coq (8.3.pl4+dfsg-1) unstable; urgency=low
+
+  * New upstream release
+  * Replace proofgeneral-coq by proofgeneral in dependencies
+  * Switch debian/copyright to format 1.0
+  * Bump Standards-Version to 3.9.3
+
+ -- Stéphane Glondu <glondu@debian.org>  Tue, 27 Mar 2012 07:59:07 +0200
+
+coq (8.3.pl3+dfsg-2) unstable; urgency=low
+
+  * Recompile with camlp5 6.04 (no changes)
+
+ -- Stéphane Glondu <glondu@debian.org>  Sun, 04 Mar 2012 18:59:12 +0100
+
+coq (8.3.pl3+dfsg-1) unstable; urgency=low
+
+  * New upstream release
+    - remove all patches (applied upstream)
+
+ -- Stéphane Glondu <glondu@debian.org>  Sun, 25 Dec 2011 13:46:09 +0100
+
+coq (8.3.pl2+dfsg-2) unstable; urgency=low
+
+  * Recompile with OCaml 3.12.1 (no changes)
+  * Bump Standards-Version to 3.9.2 (no changes)
+
+ -- Stéphane Glondu <glondu@debian.org>  Wed, 02 Nov 2011 22:27:18 +0100
+
+coq (8.3.pl2+dfsg-1) unstable; urgency=low
+
+  * New upstream release
+  * Add patch to fix thumb2-related build error (Closes: #622882)
+  * Upload to unstable
+
+ -- Stéphane Glondu <glondu@debian.org>  Tue, 19 Apr 2011 17:37:30 +0200
+
+coq (8.3.pl1+dfsg-2) experimental; urgency=low
+
+  * Set and check COQ_VERSION used to compute COQ_ABI in debian/rules
+
+ -- Stéphane Glondu <glondu@debian.org>  Sat, 26 Feb 2011 18:12:12 +0100
+
+coq (8.3.pl1+dfsg-1) experimental; urgency=low
+
+  * New upstream release
+    - remove all patches (applied upstream)
+  * debian/rules:
+    - run test-suite in override_dh_auto_test, skip coqchk run
+    - make "build" explicitly a phony target
+  * Update copyright file
+  * Fix installation of emacs files
+  * Install plugins in new binary package libcoq-ocaml
+  * Bump Standards-Version to 3.9.1 (no changes)
+
+ -- Stéphane Glondu <glondu@debian.org>  Fri, 24 Dec 2010 12:51:59 +0100
+
+coq (8.2.pl2+dfsg-2) unstable; urgency=low
+
+  * Add Fix-build-with-camlp5-6.02.1.patch
+  * Bump versioned build-dependency on liblablgtk2-ocaml-dev to ease
+    lablgtk2 transition
+
+ -- Stéphane Glondu <glondu@debian.org>  Mon, 21 Feb 2011 16:51:11 +0100
+
+coq (8.2.pl2+dfsg-1) unstable; urgency=low
+
+  * New upstream release
+    - compiles with OCaml 3.12 (Closes: #585452)
+    - remove 0001-Update-for-why-2.19.patch (applied upstream)
+    - add 0002-Remove-dependency-to-Unix-from-module-Profile.patch
+  * Use dh with overrides
+  * debian/control:
+    - remove Stefano and Remi from Uploaders
+    - replace Conflicts with Breaks
+    - bump Standards-Version to 3.9.0
+  * Switch source package format to 3.0 (quilt)
+
+ -- Stéphane Glondu <glondu@debian.org>  Fri, 02 Jul 2010 15:25:15 +0200
+
+coq (8.2.pl1+dfsg-6) unstable; urgency=low
+
+  * Add Disable-micromega-tests.patch (workaround for bug #570920)
+
+ -- Stéphane Glondu <glondu@debian.org>  Mon, 22 Feb 2010 10:41:15 +0100
+
+coq (8.2.pl1+dfsg-5) unstable; urgency=low
+
+  * Rebuild with OCaml 3.11.2
+  * Bump Standards-Version to 3.8.4 (no changes)
+
+ -- Stéphane Glondu <glondu@debian.org>  Wed, 10 Feb 2010 09:24:03 +0100
+
+coq (8.2.pl1+dfsg-4) unstable; urgency=low
+
+  [ Stefano Zacchiroli ]
+  * debian/control: fix typo in long description (Closes: #557458)
+
+  [ Stéphane Glondu ]
+  * Switch to dh-ocaml 0.9
+
+ -- Stéphane Glondu <glondu@debian.org>  Thu, 03 Dec 2009 11:54:58 +0100
+
+coq (8.2.pl1+dfsg-3) unstable; urgency=low
+
+  * Update README.Debian (Closes: #538398)
+  * Add 0001-Update-for-why-2.19.patch
+  * debian/control:
+    - update my e-mail address and remove DMUA
+    - add why to Suggests
+    - add quilt to Build-Depends
+    - update Standards-Version to 3.8.3 (no changes)
+  * Update README.source to reflect use of quilt
+
+ -- Stéphane Glondu <glondu@debian.org>  Sat, 29 Aug 2009 16:58:45 +0200
+
+coq (8.2.pl1+dfsg-2) unstable; urgency=low
+
+  * During validation of stdlib, call coqchk without -silent to avoid
+    timeout on buildds because of lack of output
+
+ -- Stephane Glondu <steph@glondu.net>  Sun, 05 Jul 2009 12:51:15 +0200
+
+coq (8.2.pl1+dfsg-1) unstable; urgency=low
+
+  * New Upstream Version
+  * debian/purify_tarball: keep some files from doc/common/styles/html
+    needed for HTML API doc generation
+
+ -- Stephane Glondu <steph@glondu.net>  Sat, 04 Jul 2009 12:13:28 +0200
+
+coq (8.2-1+dfsg-2) unstable; urgency=low
+
+  [ Samuel Mimram ]
+  * Remove upstream url from long descriptions since we already use the
+    Homepage field, closes: #524037.
+  * Updated watch file.
+
+  [ Stephane Glondu ]
+  * Remove suggestion on package cle (which has been removed), use
+    readline-editor instead
+  * Recompile with OCaml 3.11.1 (Closes: #535320)
+  * Add versioned dependencies to camlp5 and liblablgtk2-ocaml-dev to
+    ease OCaml 3.11.1 transition
+  * Move libcoq-ocaml-dev to section ocaml
+  * Update Standards-Version to 3.8.2
+
+ -- Stephane Glondu <steph@glondu.net>  Wed, 01 Jul 2009 17:41:55 +0200
+
+coq (8.2-1+dfsg-1) unstable; urgency=low
+
+  * New Upstream Version
+  * Use variables and ocamlinit rule from dh-ocaml in rules
+  * Added coqvars.mk helper for coq-related packages, and remove
+    /usr/lib/coq/abi (its contents is now it the COQ_ABI variable)
+  * Remove dependency on dpatch
+  * Add some missing Conflicts and Replaces in coq and libcoq-ocaml-dev
+    (Closes: #517107)
+  * Add missing dependency for coqide.byte (no longer compiled in
+    custom mode): liblablgtk2-ocaml
+  * Rebuild with OCaml 3.11
+
+ -- Stephane Glondu <steph@glondu.net>  Fri, 27 Feb 2009 13:31:30 +0100
+
+coq (8.2~rc2+dfsg-3) experimental; urgency=low
+
+  * Explicit more dependencies and drop dependency on
+    ocaml-best-compilers, for autobuilders
+
+ -- Stephane Glondu <steph@glondu.net>  Sun, 08 Feb 2009 22:42:51 +0100
+
+coq (8.2~rc2+dfsg-2) experimental; urgency=low
+
+  * Add more versioned dependencies to please buildds
+
+ -- Stephane Glondu <steph@glondu.net>  Sun, 08 Feb 2009 10:52:43 +0100
+
+coq (8.2~rc2+dfsg-1) experimental; urgency=low
+
+  * New upstream release candidate
+  * Bump debhelper compatibility level to 7
+  * Remove obsolete patches
+  * Use debhelper 7, simplify debian/rules (Closes: #436684)
+  * Add binary package libcoq-ocaml-dev
+  * Rename package coq-libs to coq-theories to avoid confusion, and
+    add a NEWS file to document it
+  * Add virtual coq-$ABI package, to express some ABI dependencies,
+    and put $ABI in /usr/lib/coq/abi.
+
+ -- Stephane Glondu <steph@glondu.net>  Mon, 02 Feb 2009 09:23:42 +0100
+
+coq (8.2~beta4+dfsg-2) experimental; urgency=low
+
+  * [45cca7f] Add non-native-archs.dpatch; fixes FTBFS on non-native
+    architectures (Closes: #495165)
+
+ -- Stephane Glondu <steph@glondu.net>  Fri, 15 Aug 2008 13:20:16 +0200
+
+coq (8.2~beta4+dfsg-1) experimental; urgency=low
+
+  [ Samuel Mimram ]
+  * New upstream release.
+  * Updated patches and removed coqdoc_stdlib, makefile, configure and
+    cmxa-install obsolete patches.
+
+  [ Stephane Glondu ]
+  * Update debian/rules and debhelper files
+  * [8dd1802] Fix typo in README.Debian
+  * [dec29bb] Add myself to Uploaders, and DM-Upload-Allowed to control
+  * [dd1436b] Switch packaging to git
+  * [2dd9e5d] Set doc-base section to Science/Mathematics
+  * [c89cb94] Add Homepage field
+  * [7dd7c53] Add debian/README.source
+  * [1c6c7c8] Bump Standards-Version to 3.8.0
+  * [38db629] Remove browser.dpatch and use --browser configure option
+  * [9fd4621] Add use-env-in-coq-config.dpatch
+  * [c7560b2] Remove obsolete manpages (now shipped upstream)
+
+ -- Stephane Glondu <steph@glondu.net>  Tue, 12 Aug 2008 16:37:51 +0200
+
+coq (8.1.pl3+dfsg-1) unstable; urgency=low
+
+  [ Stefano Zacchiroli ]
+  * fix vcs-svn field to point just above the debian/ dir
+
+  [ Samuel Mimram ]
+  * New upstream release.
+  * Makefile should now be compatible with dash, closes: #459050.
+  * Updated watch file.
+
+ -- Samuel Mimram <smimram@debian.org>  Fri, 04 Jan 2008 13:21:43 +0000
+
+coq (8.1.pl2+dfsg-3) unstable; urgency=low
+
+  * Added check.dpatch to remove warnings which made some tests erroneously
+    fail, closes: #452572.
+  * Added a dependency from coq to emacsen-common, closes: #435023.
+
+ -- Samuel Mimram <smimram@debian.org>  Thu, 29 Nov 2007 13:59:01 +0000
+
+coq (8.1.pl2+dfsg-2) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Samuel Mimram <smimram@debian.org>  Fri, 16 Nov 2007 19:20:24 +0000
+
+coq (8.1.pl2+dfsg-1) experimental; urgency=low
+
+  * New upstream release.
+  * Removed camlp5.dpatch, integrated upstream.
+  * Updated browser.dpatch, coqdoc_stdlib.dpatch and makefile.dpatch.
+  * Corrected emacs-mode startup file, closes: #446170.
+  * Removed Sven Luther from uploaders.
+
+ -- Samuel Mimram <smimram@debian.org>  Mon, 15 Oct 2007 18:55:09 +0000
+
+coq (8.1.pl1+dfsg-3) unstable; urgency=low
+
+  * Depend on ocaml-base-nox since coq_makefile needs ocamlrun,
+    closes: #439570.
+
+ -- Samuel Mimram <smimram@debian.org>  Sat, 08 Sep 2007 00:35:31 +0200
+
+coq (8.1.pl1+dfsg-2) experimental; urgency=low
+
+  * Updated for OCaml 3.10.
+  * Build-depend on camlp5.
+  * Added camlp5.dpatch to fix compilation problems.
+
+ -- Samuel Mimram <smimram@debian.org>  Wed, 22 Aug 2007 16:39:04 +0000
+
+coq (8.1.pl1+dfsg-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Samuel Mimram <smimram@debian.org>  Sat, 18 Aug 2007 20:59:45 +0200
+
+coq (8.1+dfsg-6) unstable; urgency=low
+
+  * Add dependencies on ${misc:Depends}, closes: #431679.
+
+ -- Samuel Mimram <smimram@debian.org>  Wed, 04 Jul 2007 10:49:01 +0200
+
+coq (8.1+dfsg-5) unstable; urgency=low
+
+  * Correctly clean, closes: #424162.
+
+ -- Samuel Mimram <smimram@debian.org>  Tue, 22 May 2007 21:53:16 +0200
+
+coq (8.1+dfsg-4) unstable; urgency=low
+
+  * Correctly set Coq_config.best when rebuilding in byte mode.
+  * Removed tetex-extra from build-dependencies.
+
+ -- Samuel Mimram <smimram@debian.org>  Tue, 24 Apr 2007 14:46:59 +0000
+
+coq (8.1+dfsg-3) unstable; urgency=low
+
+  * Uploading to unstable.
+
+ -- Samuel Mimram <smimram@debian.org>  Mon, 09 Apr 2007 16:48:46 +0200
+
+coq (8.1+dfsg-2) experimental; urgency=low
+
+  * Added cmxa-install.dpatch to install cmxa only on native archs,
+    closes: #415867.
+  * Added configure.dpatch for the configure to correctly detect whether
+    ocamlopt is present or not.
+  * Use dh_installtex instead of hand-crafted postinst.
+
+ -- Samuel Mimram <smimram@debian.org>  Sun, 18 Mar 2007 13:21:56 +0100
+
+coq (8.1+dfsg-1) experimental; urgency=low
+
+  * New upstream release.
+  * Removed system.dpatch and next-ia64.dpatch, integrated upstream.
+  * Removed the subdirectories common, faq, RecTutorial, refman, rt, tools,
+    tutorial of the directory doc since they contain documentation under the
+    Open Publication License which is not DFSG-free (thus the +dfsg in the
+    version number). The script debian/utils/purify_tarball automates this
+    process. This documentation in packaged separately in non-free, in
+    the coq-doc package.
+
+ -- Samuel Mimram <smimram@debian.org>  Tue, 13 Feb 2007 11:38:43 +0000
+
+coq (8.1~gamma-4) experimental; urgency=low
+
+  * Correctly build glob.dump on non-native archs, closes: #400535.
+
+ -- Samuel Mimram <smimram@debian.org>  Sun, 11 Feb 2007 18:02:49 +0100
+
+coq (8.1~gamma-3) experimental; urgency=low
+
+  * Added next-ia64.dpatch to fix the FTBFS on ia64.
+  * Correctly install coqdoc.sty, closes: #409027.
+  * Build-depend on tetex-extra | texlive-latex-extra in order to allow
+    building with texlive.
+
+ -- Samuel Mimram <smimram@debian.org>  Sun,  4 Feb 2007 20:38:43 +0100
+
+coq (8.1~gamma-2) experimental; urgency=low
+
+  * Added no-complexity-test.dpatch to skip complexity checks (thanks Julien
+    Cristau), closes: #399919.
+
+ -- Samuel Mimram <smimram@debian.org>  Thu, 23 Nov 2006 14:27:15 +0000
+
+coq (8.1~gamma-1) experimental; urgency=low
+
+  * New upstream release.
+  * Made the package binNMU-safe.
+  * Minor improvements of the coqide.desktop file, closes: #383310.
+  * Added system.dpatch to avoid erroneous interpretation of ~.
+  * Removed assert.dpatch, integrated upstream.
+
+ -- Samuel Mimram <smimram@debian.org>  Tue, 21 Nov 2006 13:33:55 +0000
+
+coq (8.0pl3+8.1beta.2-1) experimental; urgency=low
+
+  * New upstream beta release.
+  * Added assert.dpatch to check assertions in native mode.
+
+ -- Samuel Mimram <smimram@debian.org>  Thu, 13 Jul 2006 16:28:24 +0000
+
+coq (8.0pl3+8.1beta-1) experimental; urgency=low
+
+  * New upstream release.
+  * Added --fsets all option to configure to build the theory of finite sets.
+  * Updated coqdoc_stdlib.dpatch, partly integrated upstream.
+  * Removed failing_tests.dpath, all the tests should succeed now.
+  * We don't need to remove rpaths anymore.
+  * Updated standards version to 3.7.2, no changes needed.
+
+ -- Samuel Mimram <smimram@debian.org>  Fri, 16 Jun 2006 12:59:07 +0000
+
+coq (8.0pl3+8.1alpha-2) experimental; urgency=low
+
+  * Added makefile.dpatch in order for ocamlopt not to be called when
+    compiling on non-native archs.
+  * Do not build the pdf documentation for the library since we don't ship it.
+    This will avoid the FTBFS because of missing LaTeX fonts.
+
+ -- Samuel Mimram <smimram@debian.org>  Sun, 30 Apr 2006 11:51:57 +0000
+
+coq (8.0pl3+8.1alpha-1) experimental; urgency=low
+
+  * New upstream release.
+  * No longer providing the compatibility coq7-libs package.
+  * coq-libs is now providing its documentation in html format.
+  * Added browser.dpatch to use the default Debian browser for help.
+  * Disabling checks which don't succeed for now: failing_tests.dpatch.
+  * Removed coq-8.0pl3-ocaml-3.09.dpatch.
+
+ -- Samuel Mimram <smimram@debian.org>  Thu, 27 Apr 2006 13:43:16 +0000
+
+coq (8.0pl3-2) unstable; urgency=low
+
+  * Added coq-8.0pl3-ocaml-3.09.dpatch in order to prevent intuition from
+    looping forever, closes: #353493.
+
+ -- Samuel Mimram <smimram@debian.org>  Sun, 19 Feb 2006 11:33:21 +0000
+
+coq (8.0pl3-1) unstable; urgency=low
+
+  * New upstream release.
+  * Removed unnecessary dependency on liblablgtk2-ocaml for coqide.
+  * Removed ocaml309.dpatch and text_view_typing_error.dpatch, integrated
+    upstream.
+  * Removing rpath from coqide binaries.
+
+ -- Samuel Mimram <smimram@debian.org>  Thu, 19 Jan 2006 22:22:39 +0100
+
+coq (8.0pl2-4) unstable; urgency=low
+
+  * Added ocaml309.dpatch patch to compile cleanly with OCaml 3.09,
+    closes: #340185.
+  * Removed recommends on coq-doc which is not in main anymore.
+  * Updated standards version to 3.6.2, no changes needed.
+
+ -- Samuel Mimram <smimram@debian.org>  Mon, 21 Nov 2005 19:52:53 +0100
+
+coq (8.0pl2-3) unstable; urgency=low
+
+  * Added text_view_typing_error patch to avoid a typing error and solve the
+    FTBFS, closes: #326740.
+  * Added forgotten call to dh_installmenu.
+
+ -- Samuel Mimram <smimram@debian.org>  Wed,  7 Sep 2005 21:26:36 +0200
+
+coq (8.0pl2-2) unstable; urgency=medium
+
+  * Rebuilding with OCaml 3.08.3 is necessary because of the former dependency
+    on ocaml-base-nox-3.08.
+  * Removed the dependency on ocaml-base-nox-3.08 since ocamlrun does not seem
+    to be necessary, even on non-native archs.
+  * Cleaner handling of -arch and -indep targets.
+  * Added utf8.v in coq and utf8.vo to coq-libs since utf8 can be useful for
+    non-coqide users too.
+  * Using dh_desktop to register .desktop files.
+
+ -- Samuel Mimram <smimram@debian.org>  Tue, 22 Mar 2005 17:40:08 +0100
+
+coq (8.0pl2-1) unstable; urgency=low
+
+  * New upstream release.
+  * Put the libraries in arch all since they are supposed to be
+    arch-independant.
+  * Updated the README.Debian to explain that .vo are not compatible between
+    different upstream releases.
+  * Renamed coq.desktop into coqide.desktop, updated it and put it in
+    /usr/share/applications/ to be compliant with the policy.
+  * Description synopsis now begin with lowercase letters.
+  * Updated Standards-Version to 3.6.1.1.
+
+ -- Samuel Mimram <smimram@debian.org>  Mon, 31 Jan 2005 13:25:06 +0100
+
+coq (8.0pl1-5) unstable; urgency=low
+
+  * Reuploaded since powerpc .deb did not include native code executable
+
+ -- Stefano Zacchiroli <zack@debian.org>  Mon, 13 Dec 2004 16:05:18 +0100
+
+coq (8.0pl1-4) unstable; urgency=low
+
+  * Rebuilt against ocaml 3.08.2
+
+ -- Stefano Zacchiroli <zack@debian.org>  Tue, 30 Nov 2004 21:38:21 +0100
+
+coq (8.0pl1-3) unstable; urgency=high
+
+  * Small patch to be able to compile with ocaml 3.08.1.
+  * Added a dependency to ocaml-base-nox when coq is compiled in bytecode.
+  * Added a menu for coqide.
+  * Enhanced the manpages.
+  * Enhanced the short descriptions of the packages.
+
+ -- Samuel Mimram <samuel.mimram@ens-lyon.org>  Tue, 17 Aug 2004 20:54:25 +0200
+
+coq (8.0pl1-2) unstable; urgency=medium
+
+  * Changed section to math.
+  * Versionned the dependency to liblablgtk2-ocaml(-dev).
+  * If we fallback on bytecode, we also try to build coqide in bytecode (I hope
+    this will fix the FTBFS on alpha).
+  * Added a watch file.
+  * Removed the unnecessary patch an unpatch targets in the rules.
+
+ -- Samuel Mimram <samuel.mimram@ens-lyon.org>  Mon, 16 Aug 2004 20:39:48 +0200
+
+coq (8.0pl1-1) unstable; urgency=low
+
+  * New upstream release: finally the version without QPL-licensed files is out,
+    closes: #230356, #250497.
+  * Libraries are now in separate packages (coq-libs and coq7-libs).
+  * An additional package provides coqide.
+  * Built with OCaml 3.08.
+  * Thank you Martin Ellis and Julien Cristau for your help on this package.
+
+ -- Samuel Mimram <samuel.mimram@ens-lyon.org>  Sun, 18 Jul 2004 01:10:24 +0200
+
+coq (7.3.1-3) unstable; urgency=low
+
+  * Added build-dependency on ocaml-best-compilers, check for opt compilers
+    in the configure-stamp target of debian/rules. Thanks to Mike Furr for
+    the patch (closes: #242761).
+  * Converted changelog to UTF-8.
+
+ -- Ralf Treinen <treinen@debian.org>  Fri,  9 Apr 2004 18:03:41 +0200
+
+coq (7.3.1-2) unstable; urgency=low
+
+  * Standards-Version 3.6.1.
+  * File debian/compat instead of variable DH_COMPAT.
+  * Build with ocaml-3.07.
+  * Maintainers: debian-ocaml-maint, Uploaders: The Ocaml Gang.
+  * Switch to dpatch system:
+    - 01_ocaml307: patch by Hugo Herbelin (thanks!) for compilation with
+      ocaml 3.07.
+  * Removed timeout crutch which used to be necessary for ocaml 3.04.
+  * Removed forcing of byte compilation on ppc.
+  * debian/rules: some cosmetic changes.
+  * Short description: capitalize first letter, drop terminal dot.
+
+ -- Ralf Treinen <treinen@debian.org>  Tue,  7 Oct 2003 22:11:31 +0200
+
+coq (7.3.1-1) unstable; urgency=low
+
+  * New bugfix upstream version.
+  * Proof General is now Recommended since he has been freed (closes:
+    Bug#162894).
+
+ -- Judicael Courant <Judicael.Courant@lri.fr>  Mon,  7 Oct 2002 12:34:03 +0200
+
+coq (7.3-1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Judicael Courant <Judicael.Courant@lri.fr>  Wed, 22 May 2002 14:48:21 +0200
+
+coq (7.2-9) unstable; urgency=low
+  * ocamlc.opt completely broken on powerpc. Added a special case in
+    "rules" for using only bytecode.
+
+ -- Judicael Courant <Judicael.Courant@lri.fr>  Fri, 15 Feb 2002 09:17:20 +0100
+
+coq (7.2-8) unstable; urgency=low
+
+  * "timeout" time is now 5300s (< 90 min).
+
+ -- Judicael Courant <Judicael.Courant@lri.fr>  Thu, 14 Feb 2002 17:38:06 +0100
+
+coq (7.2-7) unstable; urgency=low
+
+  * Build now uses ocamlc.opt and ocamlopt.opt if available.
+  * Dependency forced on ocaml >= 3.04 (dependency ocaml >=3.04 | camlp4
+    does not make buildd happy. See http://buildd.debian.org/fetch.php?
+    &pkg=coq&ver=7.2-5&arch=arm&stamp=1013388706&file=log&as=raw).
+
+ -- Judicael Courant <Judicael.Courant@lri.fr>  Tue, 12 Feb 2002 09:10:01 +0100
+
+coq (7.2-6) unstable; urgency=low
+
+  * Typo in rules, which made the build process always build in
+    bytecode. Fixed.
+
+ -- Judicael Courant <Judicael.Courant@lri.fr>  Mon, 11 Feb 2002 11:22:21 +0100
+
+coq (7.2-5) unstable; urgency=low
+
+  * Pb with timeout, used in 7.2-4 (bug 132927) making the build process
+    fail when compilation in native mode fails. Workaround in rules: after
+    a "timeout ... make ..." we try a "make -q" to check that everything
+    has been done correctly.
+
+ -- Judicael Courant <Judicael.Courant@lri.fr>  Fri,  8 Feb 2002 10:08:10 +0100
+
+coq (7.2-4) unstable; urgency=low
+  * Native code compilation failed on sparc; coqtop built by ocamlopt
+    entered an infinite loop on powerpc. Fixed (using timeout for powerpc:
+    if coqtop loops, it is rebuild using the bytecode compiler)
+
+ -- Judicael Courant <Judicael.Courant@lri.fr>  Fri,  1 Feb 2002 11:04:25 +0100
+
+coq (7.2-3) unstable; urgency=low
+  * Workaround for problems with buildd/apt trying to install camlp4
+    (closes: Bug#130046).
+
+ -- Judicaël Courant <Judicael.Courant@lri.fr>  Mon, 21 Jan 2002 09:46:16 +0100
+
+coq (7.2-2) unstable; urgency=low
+
+  * Build-Depends now requires camlp4 instead of camlp4 (>=3.01) since
+    camlp4 is a virtual package provided by ocaml >=3.04.
+
+ -- Judicaël Courant <Judicael.Courant@lri.fr>  Fri, 11 Jan 2002 11:08:03 +0100
+
+coq (7.2-1) unstable; urgency=low
+  * New upstream version.
+
+ -- Judicaël Courant <Judicael.Courant@lri.fr>  Wed,  9 Jan 2002 14:02:42 +0100
+
+coq (7.1-2) unstable; urgency=low
+
+  * Fixed policy problem (conf files).
+  * Trying to compile in bytecode if native code compilation fails
+    (closes: Bug#119714)
+  * Errors raised by the Simpl tactic is an upstream bug and should
+    have been fixed in 7.0 (closes: Bug#74518).
+
+ -- Judicaël Courant <Judicael.Courant@lri.fr>  Tue, 11 Dec 2001 13:33:15 +0100
+
+coq (7.1-1) unstable; urgency=low
+  * New upstream version.
+
+ -- Judicaël Courant <Judicael.Courant@lri.fr>  Tue,  25 Sep 2001 16:27:04 +0200
+
+coq (7.0-1) unstable; urgency=low
+  * New maintainer Judicaël Courant <Judicael.Courant@lri.fr>.
+  * New upstream version.
+  * Added Build-Depends (closes: Bug#70273).
+  * Cleaned up dependencies.
+  * Emacs mode installation now follows Emacs policy.
+  * Made compilation non-interactive (closes: Bug#92461).
+  * Added Suggests cle.
+
+
+ -- Judicaël Courant <Judicael.Courant@lri.fr>  Tue,  17 Apr 2001 19:24:34 +0200
+
+coq (6.3.1-3) unstable; urgency=low
+
+  * Patched to allow use of ocaml3.
+
+ -- Fernando Sanchez <fer@debian.org>  Fri,  7 Jul 2000 08:05:47 +0200
+
+coq (6.3.1-2) unstable; urgency=low
+
+  * Some changes to allow successful porting of this package:
+  * Added checking for ocamlopt.opt before running ./configure with -opt,
+    and configure without it if it is not present for this architecture.
+  * Added checking for ocamlopt before making world-opt.
+
+ -- Fernando Sanchez <fer@debian.org>  Sat, 18 Dec 1999 16:45:01 +0100
+
+coq (6.3.1-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Fernando Sanchez <fer@debian.org>  Fri,  3 Dec 1999 22:06:04 +0100

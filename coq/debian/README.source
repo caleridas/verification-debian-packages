@@ -1,0 +1,56 @@
+--------------------------
++ Coq package for Debian +
+--------------------------
+
+
+Packaging a new upstream version
+--------------------------------
+
+Coq documentation may be distributed only subject to the terms and
+conditions set forth in the Open Publication License, v1.0 or later,
+which is not DFSG-compliant. See:
+
+  http://lists.debian.org/debian-legal/2004/03/msg00226.html
+
+Only coqdoc-generated documentation of the standard library is shipped
+in main. The full documentation is shipped in non-free (as coq-doc
+package).
+
+The git-import-orig tool automatically filters out problematic files,
+thanks to the configuration in debian/gbp.conf. It is suggested to
+append the "dfsg" suffix to the upstream version to make repackaging
+explicit.
+
+
+Patch system
+------------
+
+This source package is in format 3.0 (quilt).
+
+The quilt series, if any, is generated from the Git repository, using
+dom-{apply,save}-patches, from the dh-ocaml (>= 0.5) package. Please
+refer to the appendix about Git in the Debian OCaml Packaging Policy
+(from the same package).
+
+
+Version Control System
+----------------------
+
+Packaging is versioned with git, using git-import-orig (with
+--pristine-tar option) and git-buildpackage (with --git-pristine-tar
+option). Debian changelog can be updated based on git changelog using
+git-dch. Please consider reading the documentation of these tools.
+
+It was versioned with subversion until Wed, 23 Jul 2008.
+
+
+Build cache
+-----------
+
+Since Coq takes so much time to compile, there is a build cache to
+speed-up Debian development and debugging. Just copy a previous build
+to ../coq.cache, and debian/rules will detect its presence and rsync
+from there instead of really compiling Coq...
+
+
+ -- Stéphane Glondu <glondu@debian.org>, Mon, 20 Aug 2012 18:20:18 +0200

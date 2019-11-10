@@ -1,0 +1,4 @@
+* Move the coqide stuff from /usr/lib/coq/ide to /usr/share/coqide. The variable
+  lib_ide should be changed to do that.
+
+* Remove the .byte files on native archs.

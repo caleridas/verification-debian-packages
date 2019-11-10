@@ -1,0 +1,5 @@
+# `make install` installs this to its expected location; `make install-byte`
+# additionally installs it here.
+usr/lib/coq/kernel/byterun/dllcoqrun.so
+
+usr/lib/coq/revision

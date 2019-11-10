@@ -1,0 +1,3 @@
+VERSION=8.9.1
+ORIGIN=https://github.com/coq/coq.git
+TAG=V8.9.1

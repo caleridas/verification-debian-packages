@@ -1,0 +1,9 @@
+Document: coq-library
+Title: The Coq Standard Library
+Author: The Coq Development Team
+Abstract: Standard Library documentation of the Coq proof assistant which is a system designed to develop mathematical proofs, and especially to write formal specifications, programs and to verify that programs are correct with respect to their specification.
+Section: Science/Mathematics
+
+Format: HTML
+Index: /usr/share/doc/coq-theories/html/index.html
+Files: /usr/share/doc/coq-theories/html/*.html

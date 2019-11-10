@@ -1,0 +1,24 @@
+From: Helge Bahmann <hcb@chaoticmind.net>
+Subject: Fix JSON extract constant / extract inductive
+Forwarded: https://github.com/coq/coq/pull/10897
+
+Fix coq#4741: Extract Constant/Inductive with JSON
+
+Integrated as 5e6d984197a986d511a4e54a38425499374e36c1 in coq master
+
+diff --git a/plugins/extraction/json.ml b/plugins/extraction/json.ml
+index e43c47d050..ca4419a637 100644
+--- a/plugins/extraction/json.ml
++++ b/plugins/extraction/json.ml
+@@ -17,7 +17,10 @@ let json_bool b =
+   if b then str "true" else str "false"
+
+ let json_global typ ref =
+-  json_str (Common.pp_global typ ref)
++  if is_custom ref then
++    json_str (find_custom ref)
++  else
++    json_str (Common.pp_global typ ref)
+
+ let json_id id =
+   json_str (Id.to_string id)

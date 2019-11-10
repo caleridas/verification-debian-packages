@@ -1,0 +1,4 @@
+?package(coqide):command="/usr/bin/coqide" \
+  icon="/usr/share/pixmaps/coqide.xpm" \
+  needs="X11" \
+  section="Applications/Science/Mathematics" title="CoqIDE"

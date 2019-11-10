@@ -1,0 +1,19 @@
+usr/lib/coq/clib/clib.cma
+usr/lib/coq/engine/engine.cma
+usr/lib/coq/grammar/grammar.cma
+usr/lib/coq/ide/ide.cma
+usr/lib/coq/interp/interp.cma
+usr/lib/coq/kernel/kernel.cma
+usr/lib/coq/lib/lib.cma
+usr/lib/coq/library/library.cma
+usr/lib/coq/parsing/parsing.cma
+usr/lib/coq/pretyping/pretyping.cma
+usr/lib/coq/printing/printing.cma
+usr/lib/coq/proofs/proofs.cma
+usr/lib/coq/stm/stm.cma
+usr/lib/coq/tactics/tactics.cma
+usr/lib/coq/toplevel/toplevel.cma
+usr/lib/coq/vernac/vernac.cma
+usr/lib/coq/META
+# other *.cm* files will be added here by debian/rules
+

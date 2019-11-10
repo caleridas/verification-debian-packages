@@ -1,0 +1,126 @@
+#!/usr/bin/make -f
+# debian/rules for coq
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+# Build cache (for accelerating Debian debugging)
+BUILDCACHE := $(wildcard ../coq.cache)
+
+# This has to be exported to make some magic below work.
+export CAML_LD_LIBRARY_PATH = $(shell pwd)/kernel/byterun
+
+# Show full commands when building Coq
+export VERBOSE=1
+
+include /usr/share/ocaml/ocamlvars.mk
+
+HTMLDOC := doc/stdlib/html/index.html
+
+COQPREF := $(CURDIR)/debian/tmp
+ADDPREF := COQINSTALLPREFIX=$(COQPREF) OLDROOT=
+
+PACKAGES := $(shell dh_listpackages)
+
+COQ_VERSION := 8.9.1
+COQ_ABI := $(COQ_VERSION)+$(OCAML_ABI)
+
+ARCH := $(shell dpkg-architecture -q DEB_TARGET_ARCH)
+ifeq ($(ARCH),$(filter $(ARCH),amd64 i386))
+NATIVE_COMPUTE :=
+else
+NATIVE_COMPUTE := -native-compiler no
+endif
+
+CONFIGUREOPTS := -arch Linux -prefix /usr -mandir /usr/share/man \
+  -configdir /etc/xdg/coq \
+  -browser "/usr/bin/x-www-browser %s &" \
+  -coqide opt \
+  -with-doc no \
+  $(NATIVE_COMPUTE)
+
+export OCAMLINIT_SED += \
+  -e 's%@CoqVersion@%$(COQ_VERSION)%' \
+  -e 's%@CoqABI@%$(COQ_ABI)%'
+
+%:
+	+dh $@ --with ocaml,python3
+
+# There is already a file named "build" in upstream sources, so the
+# above rule is never called. We make it explicitly a phony rule here.
+.PHONY: build
+build:
+	+dh $@ --with ocaml,python3
+
+.PHONY: override_dh_auto_configure
+override_dh_auto_configure:
+	./configure $(CONFIGUREOPTS)
+
+.PHONY: override_dh_auto_build
+override_dh_auto_build:
+ifeq ($(BUILDCACHE),)
+
+# VALIDOPTS are the options given to coqchk; the value given here is
+# the default one without -silent (-silent maybe cause buildd to
+# timeout because of lack of output)
+
+# Don't combine `make world` and `make byte`--doing so triggers a race
+# in the build system. See upstream's CHANGES.
+	$(MAKE) world STRIP=true
+	$(MAKE) byte STRIP=true
+	$(MAKE) DOC_TARGETS=$(HTMLDOC) $(HTMLDOC)
+else
+	rsync -a --exclude=debian --exclude=.git $(BUILDCACHE)/ .
+endif
+# Check that $(COQ_VERSION) has the right value
+	ACTUAL_COQ_VERSION="$$(./bin/coqc --version | awk '/version/{print $$6}')"; \
+	if [ "$$ACTUAL_COQ_VERSION" != "$(COQ_VERSION)" ]; then \
+	  echo "Please set COQ_VERSION to $$ACTUAL_COQ_VERSION in debian/rules"; \
+	  exit 2; \
+	fi
+
+.PHONY: override_dh_auto_test
+override_dh_auto_test:
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+	CAML_LD_LIBRARY_PATH=$(shell pwd)/kernel/byterun COQLIB=$(shell pwd) \
+	  $(MAKE) test-suite COMPLEXITY=
+endif
+
+.PHONY: override_dh_auto_install
+override_dh_auto_install:
+	$(MAKE) $(ADDPREF) install install-byte
+	find debian/tmp -regextype posix-awk \
+	  -regex '.*\.(cmi|cmx|cmxa|[ao])$$' \
+	  | grep -v coq-native \
+	  >> debian/libcoq-ocaml-dev.install
+	find debian/tmp -name '*.vo' -printf '%P\n' \
+	  >> debian/coq-theories.install
+	find debian/tmp -name '*.v' -printf '%P\n' \
+	  >> debian/coq-theories.install
+	find debian/tmp -name '*.glob' -printf '%P\n' \
+	  >> debian/coq-theories.install
+	find debian/tmp -name '.coq-native' -printf '%P\n' \
+	  >> debian/coq-theories.install
+
+.PHONY: override_dh_install
+override_dh_install:
+	chmod +x debian/coq.install
+	dh_install --fail-missing
+
+.PHONY: override_dh_fixperms
+override_dh_fixperms:
+	dh_fixperms
+	chmod -x debian/tmp/usr/lib/coq/tools/TimeFileMaker.py
+
+.PHONY: override_dh_ocaml
+override_dh_ocaml:
+	dh_ocaml
+	for f in debian/*substvars; do echo $$f; cat $$f; done
+
+.PHONY: override_dh_gencontrol
+override_dh_gencontrol:
+	for u in $(PACKAGES); do \
+	  echo 'F:OCamlABI=$(OCAML_ABI)' >> debian/$$u.substvars; \
+	  echo 'F:CoqABI=$(COQ_ABI)' >> debian/$$u.substvars; \
+	done
+	dh_gencontrol

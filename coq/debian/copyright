@@ -1,0 +1,159 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Coq
+Source: https://github.com/coq/coq, modified to remove non-free parts
+License: LGPL-2.1
+
+Files: *
+Copyright: 1999-2018 The Coq Development Team, INRIA, CNRS and contributors
+License: LGPL-2.1
+
+Files: config/* dev/* ide/* interp/* kernel/* lib/* library/* parsing/*
+       pretyping/* proofs/* tactics/* test-suite/* theories/* tools/* toplevel/*
+Copyright: 1999-2017 The Coq development team, INRIA, CNRS, LIX, LRI, PPS
+License: LGPL-2.1
+
+Files: clib/diff2.ml
+Copyright: 2016 OOHASHI Daichi
+License: Expat
+
+Files: clib/predicate.ml
+Copyright: 1996 Institut National de Recherche en Informatique et en Automatique
+License: LGPL-2+
+
+Files: debian/*
+Copyright: 1999-2000 Fernando Sanchez <fer@debian.org>
+           2001-2002 Judicael Courant <Judicael.Courant@lri.fr>
+           2004-2009 Samuel Mimram <smimram@debian.org>
+           2008-2014 Stéphane Glondu <glondu@debian.org>
+           2018 Benjamin Barenblat <bbaren@debian.org>
+License: LGPL-2.1
+
+Files: dev/build/windows/*
+Copyright: 2016 Intel Deutschland GmbH
+License: LGPL-2.1+
+
+Files: dev/tools/coqdev.el
+Copyright: 2018 The Coq Development Team
+License: LGPL-2.1
+
+Files: ide/configwin.ml
+       ide/configwin.mli
+       ide/configwin_ihm.ml
+       ide/configwin_ihm.mli
+       ide/configwin_messages.ml
+       ide/configwin_types.ml
+Copyright: 2005 Institut National de Recherche en Informatique et en Automatique
+License: LGPL-2+
+
+Files: ide/protocol/xml_lexer.mli
+       ide/protocol/xml_lexer.mll
+       ide/protocol/xml_parser.mli
+Copyright: 2003 Nicolas Cannasse <ncannasse@motion-twin.com>
+License: LGPL-2.1+
+
+Files: plugins/micromega/sos.ml plugins/micromega/sos_lib.ml
+Copyright: 1998 University of Cambridge
+           1998-2006 John Harrison
+License: HOLLight
+
+Files: test-suite/bugs/closed/1918.v
+Copyright: Ralph Matthes, I.R.I.T., C.N.R.S. & University of Toulouse
+License: LGPL-2.1
+
+Files: test-suite/interactive/ParalITP_smallproofs.v
+       test-suite/stm/Nijmegen_QArithSternBrocot_Zaux.v
+Copyright: 1999-2017 The Coq development team, INRIA, CNRS, LIX, LRI, PPS
+License: LGPL-2.1+
+
+License: Expat
+ Permission is hereby granted, free of charge, to any person obtaining a copy of
+ this software and associated documentation files (the "Software"), to deal in
+ the Software without restriction, including without limitation the rights to
+ use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+ of the Software, and to permit persons to whom the Software is furnished to do
+ so, subject to the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+License: HOLLight
+ HOL Light version 2.20, hereinafter referred to as "the software", is a
+ computer theorem proving system written by John Harrison. Much of the software
+ was developed at the University of Cambridge Computer Laboratory, New Museums
+ Site, Pembroke Street, Cambridge, CB2 3QG, England. The software is copyright,
+ University of Cambridge 1998 and John Harrison 1998-2006.
+ .
+ Permission to use, copy, modify, and distribute the software and its
+ documentation for any purpose and without fee is hereby granted. In the case of
+ further distribution of the software the present text, including copyright
+ notice, licence and disclaimer of warranty, must be included in full and
+ unmodified form in any release. Distribution of derivative software obtained by
+ modifying the software, or incorporating it into other software, is permitted,
+ provided the inclusion of the software is acknowledged and that any changes
+ made to the software are clearly documented.
+ .
+ John Harrison and the University of Cambridge disclaim all warranties with
+ regard to the software, including all implied warranties of merchantability and
+ fitness. In no event shall John Harrison or the University of Cambridge be
+ liable for any special, indirect, incidental or consequential damages or any
+ damages whatsoever, including, but not limited to, those arising from computer
+ failure or malfunction, work stoppage, loss of profit or loss of contracts.
+
+License: LGPL-2+
+ This library is free software; you can redistribute it and/or modify it under
+ the terms of the GNU Library General Public License as published by the Free
+ Software Foundation; either version 2 of the License, or (at your option) any
+ later version.
+ .
+ This library is distributed in the hope that it will be useful, but WITHOUT ANY
+ WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ PARTICULAR PURPOSE. See the GNU Library General Public License for more
+ details.
+ .
+ You should have received a copy of the GNU Library General Public License along
+ with this library; if not, write to the Free Software Foundation, Inc., 51
+ Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ .
+ On Debian systems, the complete text of the GNU Library General Public License
+ version 2 can be found in "/usr/share/common-licenses/LGPL-2".
+
+License: LGPL-2.1
+ This library is free software; you can redistribute it and/or modify it under
+ the terms of the GNU Lesser General Public License, version 2.1, as published
+ by the Free Software Foundation.
+ .
+ This library is distributed in the hope that it will be useful, but WITHOUT ANY
+ WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+ .
+ You should have received a copy of the GNU Lesser General Public License along
+ with this library; if not, write to the Free Software Foundation, Inc., 51
+ Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ .
+ On Debian systems, the complete text of the GNU Lesser General Public License
+ version 2.1 can be found in "/usr/share/common-licenses/LGPL-2.1".
+
+License: LGPL-2.1+
+ This library is free software; you can redistribute it and/or modify it under
+ the terms of the GNU Lesser General Public License as published by the Free
+ Software Foundation; either version 2.1 of the License, or (at your option) any
+ later version.
+ .
+ This library is distributed in the hope that it will be useful, but WITHOUT ANY
+ WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+ .
+ You should have received a copy of the GNU Lesser General Public License along
+ with this library; if not, write to the Free Software Foundation, Inc., 51
+ Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ .
+ On Debian systems, the complete text of the GNU Lesser General Public License
+ version 2.1 can be found in "/usr/share/common-licenses/LGPL-2.1".
