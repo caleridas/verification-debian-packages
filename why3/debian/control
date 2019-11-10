@@ -1,0 +1,100 @@
+Source: why3
+Section: math
+Priority: optional
+Maintainer: Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>
+Uploaders: Ralf Treinen <treinen@debian.org>
+Build-Depends:
+  debhelper-compat (= 12), dh-ocaml,
+  ocaml-nox (>= 3.11.2),
+  ocaml-findlib,
+  menhir, libmenhir-ocaml-dev,
+  libzarith-ocaml-dev,
+  libsqlite3-ocaml-dev,
+  libzip-ocaml-dev,
+  libocamlgraph-ocaml-dev,
+  coq, libcoq-ocaml-dev,
+  liblablgtk2-ocaml-dev, liblablgtksourceview2-ocaml-dev,
+  tex-common
+Build-Depends-Indep:
+  rubber, hevea, lmodern,
+  texlive-plain-generic,
+  texlive-latex-recommended, texlive-latex-extra,
+  texlive-fonts-recommended,
+  texlive-bibtex-extra
+Standards-Version: 4.3.0
+Homepage: http://why3.lri.fr/
+Vcs-Git: https://salsa.debian.org/ocaml-team/why3.git
+Vcs-Browser: https://salsa.debian.org/ocaml-team/why3
+
+Package: why3
+Architecture: any
+Depends:
+  ${shlibs:Depends},
+  ${ocaml:Depends},
+  ${misc:Depends},
+Recommends: cvc3 | cvc4 | why3-coq | spass | z3 | alt-ergo (>= 2.0.0)
+Suggests: why3-examples
+Description: Software verification platform
+ Why3 is a platform for deductive program verification. It provides a
+ rich language for specification and programming, called WhyML, and
+ relies on external theorem provers, both automated and interactive,
+ to discharge verification conditions. Why3 comes with a standard
+ library of logical theories (integer and real arithmetic, Boolean
+ operations, sets and maps, etc.) and basic programming data
+ structures (arrays, queues, hash tables, etc.). A user can write
+ WhyML programs directly and get correct-by-construction OCaml
+ programs through an automated extraction mechanism. WhyML is also
+ used as an intermediate language for the verification of C, Java, or
+ Ada programs.
+ .
+ Why3 is a complete reimplementation of the former Why platform. Among
+ the new features are: numerous extensions to the input language, a
+ new architecture for calling external provers, and a well-designed
+ API, allowing to use Why3 as a software library. An important
+ emphasis is put on modularity and genericity, giving the end user a
+ possibility to easily reuse Why3 formalizations or to add support for
+ a new external prover if wanted.
+
+Package: why3-coq
+Architecture: any
+Depends: coq-${F:CoqABI}, ${misc:Depends}, ${ocaml:Depends}, ${shlibs:Depends}
+Recommends: why3
+Description: Coq support for the why3 verification platform
+ This package contains the compiled coq files that are necessary to
+ use the coq proof assistant together with the why3 deductive
+ verification platform.
+
+Package: libwhy3-ocaml-dev
+Architecture: any
+Depends: ${misc:Depends}, ${ocaml:Depends}, ${shlibs:Depends}
+Suggests: ocaml-findlib
+Provides: ${ocaml:Provides}
+Section: ocaml
+Description: OCaml librariries for why3 (dev)
+ This package contains the libraries of the why3 verification platform
+ for developing applications using why3.
+
+Package: why3-examples
+Architecture: all
+Depends: ${misc:Depends}
+Recommends: why3
+Description: Examples for the why3 verification platform
+ This package contains examples, both of program verification tasks
+ and pure logical verification tasks, for the why3 software verification
+ platform.
+
+Package: why3-doc-html
+Architecture: all
+Depends: ${misc:Depends}
+Suggests: why3
+Description: HTML Documentation of the why3 verification platform
+ This package contains the tutorial and reference manual of the
+ why3 verification platform in HTML format.
+
+Package: why3-doc-pdf
+Architecture: all
+Depends: ${misc:Depends}
+Suggests: why3
+Description: PDF Documentation of the why3 verification platform
+ This package contains the tutorial and reference manual of the
+ why3 verification platform in PDF format.

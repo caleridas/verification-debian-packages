@@ -1,0 +1,22 @@
+Document: why3-manual-pdf
+Title: The Why3 Platform
+Author: François Bobot,
+ Jean-Christophe Filliâtre,
+ Claude Marché,
+ Guillaume Melquiond,
+ and Andrei Paskevich
+Abstract: Why3 is a platform for deductive program verification. It provides
+ a rich language for specification and programming, called whyml, and
+ relies on external theorem provers, both automated and interactive,
+ to discharge verification conditions. Why3 comes with a standard
+ library of logical theories (integer and real arithmetic, Boolean
+ operations, sets and maps, etc.) and basic programming data structures
+ (arrays, queues, hash tables, etc.). A user can write whyml programs
+ directly and get correct-by-construction OCaml programs through an
+ automated extraction mechanism. whyml is also used as an intermediate
+ language for the verification of C, Java, or Ada programs.
+Section: Science/Mathematics
+
+Format: PDF
+Index: /usr/share/doc/why3-doc-pdf/manual.pdf
+Files: /usr/share/doc/why3-doc-pdf/manual.pdf

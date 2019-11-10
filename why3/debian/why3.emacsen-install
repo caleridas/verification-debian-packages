@@ -1,0 +1,40 @@
+#! /bin/sh -e
+# /usr/lib/emacsen-common/packages/install/why3
+
+# Written by Jim Van Zandt <jrv@debian.org>, borrowing heavily
+# from the install scripts for gettext by Santiago Vila
+# <sanvila@ctv.es> and octave by Dirk Eddelbuettel <edd@debian.org>.
+
+FLAVOR=$1
+PACKAGE=why3
+
+if [ ${FLAVOR} = emacs ]; then exit 0; fi
+
+echo install/${PACKAGE}: Handling install for emacsen flavor ${FLAVOR}
+
+FLAGS="${SITEFLAG} -q -batch -l path.el -f batch-byte-compile"
+
+ELDIR=/usr/share/emacs/site-lisp
+ELCDIR=/usr/share/${FLAVOR}/site-lisp
+ELRELDIR=../../emacs/site-lisp
+
+ELFILE=why3.el
+
+# Install-info-altdir does not actually exist.
+# Maybe somebody will write it.
+if test -x /usr/sbin/install-info-altdir; then
+    echo install/${PACKAGE}: install Info links for ${FLAVOR}
+    install-info-altdir --quiet --section "" "" --dirname=${FLAVOR} /usr/share/info/${PACKAGE}.info.gz
+fi
+
+cd ${ELCDIR}
+ln -sf ${ELRELDIR}/${ELFILE} .
+
+cat << EOF > path.el
+(debian-pkg-add-load-path-item ".")
+(setq byte-compile-warnings nil)
+EOF
+${FLAVOR} ${FLAGS} ${ELFILE}
+rm -f path.el
+
+exit 0

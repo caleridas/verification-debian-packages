@@ -1,0 +1,144 @@
+.TH WHY3 "1" "March 2016" "Why3 platform" "User Commands"
+.SH NAME
+Why3 \- software verification platform
+.SH SYNOPSIS
+.B why3
+[\fI\,general options\/\fR] \fI\,<command> \/\fR[\fI\,command options\/\fR]
+[\fI\,command arguments\/\fR]
+.SH DESCRIPTION
+This manual page summarizes basic information about the \fBwhy3\fR command.
+Please refer to the Reference Manual for complete information.
+
+Why3 is a platform for deductive program verification. It provides a
+rich language for specification and programming, called whyml, and
+relies on external theorem provers, both automated and interactive, to
+discharge verification conditions. Why3 comes with a standard library
+of logical theories (integer and real arithmetic, Boolean operations,
+sets and maps, etc.) and basic programming data structures (arrays,
+queues, hash tables, etc.). A user can write whyml programs directly
+and get correct-by-construction OCaml programs through an automated
+extraction mechanism. whyml is also used as an intermediate language
+for the verification of C, Java, or Ada programs.
+
+.SH GENERAL OPTIONS
+.TP
+\fB\-C\fR <file>
+read configuration from <file>
+.TP
+\fB\-\-config\fR
+same as \fB\-C\fR
+.HP
+\fB\-\-extra\-config\fR <file> read additional configuration from <file>
+.TP
+\fB\-L\fR <dir>
+add <dir> to the library search path
+.TP
+\fB\-\-library\fR
+same as \fB\-L\fR
+.TP
+\fB\-\-debug\fR <flag>
+set a debug flag
+.TP
+\fB\-\-debug\-all\fR
+set all debug flags that do not change Why3 behaviour
+.TP
+\fB\-\-list\-debug\-flags\fR
+list known debug flags
+.TP
+\fB\-\-list\-transforms\fR
+list known transformations
+.TP
+\fB\-\-list\-printers\fR
+list known printers
+.TP
+\fB\-\-list\-provers\fR
+list known provers
+.TP
+\fB\-\-list\-formats\fR
+list known input formats
+.TP
+\fB\-\-list\-metas\fR
+list known metas
+.TP
+\fB\-\-print\-libdir\fR
+print location of binary components (plugins, etc)
+.TP
+\fB\-\-print\-datadir\fR
+print location of non\-binary data (theories, modules, etc)
+.TP
+\fB\-\-version\fR
+print version information
+.TP
+\fB\-h\fR
+print this list of options
+.TP
+\fB\-\-help\fR
+same as \fB\-h\fR
+
+.SH "COMMANDS"
+.TP
+\fBconfig\fR Creates a why3 configuration file \fI~/.why3.conf\fR,
+containing in particular information about available provers and
+plugins. If this file exists already, config
+will only reset unset variables to default value, but will not try to
+detect provers.
+
+The command option \fB--detect-provers\fR can be used to force Why3 to
+detect again the available provers and to replace them in the
+configuration file. The command option \fB--detect-plugins\fR does the
+same for plugins.
+
+If a supported prover is installed under a name that is not
+automatically recognized by why3 config, the command option \fB--add-prover\fR 
+adds a specified binary to the configuration. For example, an Alt-Ergo
+executable /home/me/bin/alt-ergo-trunk can be added as follows:
+
+  why3 config --add-prover alt-ergo /home/me/bin/alt-ergo-trunk
+
+.TP
+\fBdoc\fR
+produces HTML pages from Why3 source code.
+.TP
+\fBexecute\fR
+symbolically executes programs written in the WhyML language
+.TP
+\fBextract\fR
+extracts OCaml code from programs written in the WhyML language
+.TP
+\fBide\fR
+launches the graphical user interface of the why3 platform.
+
+There are no specific command options. However, at least one
+command argument must be given. More
+precisely, the first argument must be the directory of the
+session. If the directory does not exist, it is created. The other
+arguments should be existing files that are going to be added to the
+session. For convenience, if there is only one argument, it
+can be an existing file and in this case the session directory is
+obtained by removing the extension from the file name.
+
+.TP
+\fBprove\fR
+launches \fBwhy3\fR in batch mode on a an input file
+.TP
+\fBrealize\fR
+produces skeleton files for proof assistants
+.TP
+\fBreplay\fR
+executes the proofs stored in a Why3 session file, as produced by the IDE.
+.TP
+\fBsession\fR
+.TP
+\fBwc\fR
+produces statistics about Why3 and WhyML source codes.
+
+.SH "AUTHOR"
+The information on this manpage was extracted from the complete Why3
+reference manual.
+
+.SH "SEE ALSO"
+On a debian system, the full documentation for \fBwhy3\fP
+is distributed in PDF and HTML format in the packages 
+\fBwhy3-doc-html\fP and \fBwhy3-doc-pdf\fP.
+It is also available from the why3 homepage
+<http://why3.lri.fr>.

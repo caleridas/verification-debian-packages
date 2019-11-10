@@ -1,0 +1,21 @@
+Tests: why3+alt-ergo
+Depends: why3, alt-ergo (>= 2.0.0)
+Restrictions: skip-not-installable
+
+Tests: why3+cvc3
+Depends: why3, cvc3
+Restrictions: skip-not-installable
+
+Tests: why3+cvc4
+Depends: why3, cvc4
+Restrictions: skip-not-installable
+
+Tests: why3+spass
+Depends:why3, spass
+Restrictions: skip-not-installable
+
+Tests: why3+z3
+Depends:why3, z3
+
+Tests: why3+coq
+Depends: why3, why3-coq, coq

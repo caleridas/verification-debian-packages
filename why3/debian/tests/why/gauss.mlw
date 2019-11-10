@@ -1,0 +1,19 @@
+module Gauss
+
+    use int.Int
+    use ref.Ref
+    
+    let gauss (y:int) : int
+    requires {y > 0}
+    ensures  {2*result = y*(y+1)}
+    =
+    let x = ref 0 in
+    let z = ref 0 in
+    while ( !z < y) do
+       invariant {!z <= y /\ 2*(!x) = (!z)*((!z)+1)}
+       variant {y-(!z)}
+       z := !z + 1;
+       x := !x + !z
+     done;
+     !x
+end

@@ -1,0 +1,18 @@
+#!/bin/sh
+
+set -e
+
+this=why+coq
+indir=debian/tests/why
+outdir=${ADT_ARTIFACTS}/${this}
+mkdir -p ${outdir}
+
+why3 config --detect-provers > /dev/null 2>&1
+
+for infile in ${indir}/minimum.mlw
+do
+    base=$(basename $infile)
+    coqfile=${outdir}/${base%.mlw}.v
+    why3 prove -D coq ${infile} | sed -e 's/Qed./omega. Qed./' > ${coqfile} 
+    coqc -R `why3 --print-libdir`/coq/ Why3 ${coqfile} 
+done

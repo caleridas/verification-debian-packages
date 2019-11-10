@@ -1,0 +1,9 @@
+module Minimum
+
+    use int.Int
+    
+    let minimum (x:int) (y:int) : int
+    ensures  { (result=x \/ result=y) /\ result<=x /\ result <=y }
+    =
+    if x<=y then x else y
+end

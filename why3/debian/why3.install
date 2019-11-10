@@ -1,0 +1,7 @@
+debian/tmp/usr/bin
+debian/tmp/usr/share
+debian/tmp/usr/lib/*/why3/commands
+debian/tmp/usr/lib/*/why3/plugins
+debian/tmp/usr/lib/*/why3/why3*
+share/bash/why3				/usr/share/bash-completion/completions
+share/latex/why3lang.sty		/usr/share/texmf/tex/latex/misc

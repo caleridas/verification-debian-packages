@@ -1,0 +1,269 @@
+why3 (1.2.1-1) UNRELEASED; urgency=medium
+
+  * New upstream version
+
+ -- Helge Bahmann <hcb@chaoticmind.net>  Sun, 10 Nov 2019 12:28:43 +0100
+
+why3 (1.2.0-1) unstable; urgency=medium
+
+  * New upstream version
+  * Also build the library in bytecode
+  * libwhy3-ocaml-dev: add Suggests:ocaml-findlib
+  * Re-activate building of the ide, now using lablgtk3
+
+ -- Ralf Treinen <treinen@debian.org>  Fri, 15 Feb 2019 08:19:55 +0100
+
+why3 (1.1.1-4) unstable; urgency=medium
+
+  * Add build-dependency ocaml-findlib (closes: #921465)
+  * Replace dependency on debhelper by debhelper-compat
+  * Enable coq support
+
+ -- Ralf Treinen <treinen@debian.org>  Wed, 06 Feb 2019 20:57:54 +0100
+
+why3 (1.1.1-3) unstable; urgency=medium
+
+  * disable coq support.
+
+ -- Ralf Treinen <treinen@debian.org>  Sun, 03 Feb 2019 23:01:38 +0100
+
+why3 (1.1.1-2) unstable; urgency=medium
+
+  * why3-coq: depend on the virtual package provided by coq and indicating
+    the version of the coq ABI (closes: #918633).
+  * Standards-Version 4.3.0 (no change)
+  * Debhelper compatibility level 12
+    - override dh_dwz to use --no-dwz-multifile
+
+ -- Ralf Treinen <treinen@debian.org>  Thu, 10 Jan 2019 20:12:24 +0100
+
+why3 (1.1.1-1) unstable; urgency=medium
+
+  * New upstream version.
+  * Fix whitespace in debian/{control/changelog}
+
+ -- Ralf Treinen <treinen@debian.org>  Tue, 18 Dec 2018 04:50:38 +0100
+
+why3 (1.1.0-1) unstable; urgency=medium
+
+  * New upstream version. Works with cvc4 version 1.6 (closes: #906001)
+  * Since lablgtk2 does no longer build liblablgtksourceview2-ocaml-dev:
+    - drop build-dependencies liblablgtk2-ocaml-dev and
+      liblablgtksourceview2-ocaml-dev
+    - d/rules: configure with --disable-ide
+    - note in NEWS that the IDE is dropped.
+    - drop mention of IDE from why3.1 manpage.
+  * Dependencies on provers : enforce version >= 2.0.0. for alt-ergo since
+    upstream has dropped support for older versions. Add an
+    "skip-not-installable" on the test why3+alt-ergo
+  * Test why3+cvc4: fix selection of solver cvc4
+  * d/copyright: update full text of CC license.
+  * d/rules: remove empty why3shapes.gz files
+  * Standards-Version 4.2.1 (no change)
+
+ -- Ralf Treinen <treinen@debian.org>  Mon, 05 Nov 2018 19:23:56 +0100
+
+why3 (1.0.0-2) unstable; urgency=medium
+
+  * as-installed test why3+cvc4:
+    - dropped erroneous version constraint on cvc4.
+    - invoke prover simply as CVC4
+    - marked test as skip-not-installable, instead of flaky, as cvc4 does not
+      build on all architectures (architecture restriction set in src:cvc4),
+      and since cvc4 is only an alternative dependency of why3.
+  * as-installed test why3+cvc3:
+    - marked test as skip-not-installable, instead of flaky, since cvc3
+      recently has FTBFS, and since cvc3 is only an alternative dependency
+      of why3.
+  * as-installed-test why3+spass:
+    - marked test as skip-not-installable since spass recently has FTBFS
+      issues and was dropped from testing, and since spass is only an
+      alternative dependency of why3.
+
+ -- Ralf Treinen <treinen@debian.org>  Sun, 12 Aug 2018 23:29:44 +0200
+
+why3 (1.0.0-1) unstable; urgency=medium
+
+  * New upstream version
+    - drop patch getopt_long-return-value which has been applied upstream
+  * Upstream does no longer build coq-tactic:
+    - drop these from why3-coq.install
+    - drop mention of these from the long description of why3-coq
+  * libwhy3-ocaml-dep: add dependency ${shlibs:Depends}
+  * As-installed-tests:
+    - adapt the why3 files in d/tests/why to the new syntax of WhyML
+    - mark tests with cvc3 and cvc4 as flaky  (closes: #902308)
+    - test why3+cvc4: specify 'CVC4 1.5' in the invocation of why3,
+      constrain the dependency of the test on cvc4 accordingly.
+  * NEWS.Debian: new syntax of WhyML, new location of standard lib
+
+ -- Ralf Treinen <treinen@debian.org>  Wed, 27 Jun 2018 22:19:33 +0200
+
+why3 (0.88.3-3) unstable; urgency=medium
+
+  * d/control: update Vcs-* fields to salsa
+  * Add build-dependendency texlive-plain-generic to fix FTBFS with
+    texlive 2018.20180505-1 (closes: #899084)
+  * test why3+cvc4: skip when cvc4 is not available (closes: #895104)
+
+ -- Ralf Treinen <treinen@debian.org>  Sun, 27 May 2018 13:37:54 +0200
+
+why3 (0.88.3-2) unstable; urgency=medium
+
+  * Standards-version 4.1.4 (no change).
+  * d/copyright: https in format specification
+  * Add patch getopt_long-return-value which fixes a portability issue
+    (closes: #895103). Thanks a lot to Steve Langasek for the patch!
+
+ -- Ralf Treinen <treinen@debian.org>  Sat, 07 Apr 2018 11:54:01 +0200
+
+why3 (0.88.3-1) unstable; urgency=medium
+
+  * New upstream version.
+    - drop creation of empty directories in debian/rules, this has been
+      fixed by upstream.
+  * Standards-Version 4.1.3 (no change)
+  * debian/rules:
+    - fix configure stamps
+    - drop build stamps, we do not need them.
+    - dh-install: exclude extra LICENSE file
+    - drop override_dh_auto_build
+  * debhelper compatibility level 11
+
+ -- Ralf Treinen <treinen@debian.org>  Sun, 14 Jan 2018 14:52:54 +0100
+
+why3 (0.88.2-1) unstable; urgency=medium
+
+  * New upstream version.
+  * Standards-Version 4.1.2 (no change)
+  * d/rules:
+    - recreate in target configure the empty directories that are
+      in the orig tarball.
+    - invoke dh_missing with --fail-missing
+  * fix why3.install, add missing files from usr/lib
+  * Added build-dep-indep texlive-bibtex-extra
+  * debhelper compat level 10
+  * New SMT solver cvc4:
+    - add as an alternative Recommends
+    - add autopkgtest test case
+
+ -- Ralf Treinen <treinen@debian.org>  Tue, 12 Dec 2017 22:22:24 +0100
+
+why3 (0.87.3-2) unstable; urgency=medium
+
+  * upload to unstable
+  * as-installed test why3+z3: do not fail when z3 segfaults.
+
+ -- Ralf Treinen <treinen@debian.org>  Sat, 21 Jan 2017 21:02:08 +0100
+
+why3 (0.87.3-1) experimental; urgency=medium
+
+  * New upstream version:
+    - drop patch coq8.6 which is now integrated by upstream.
+  * Fix path of ocaml libdir in debian/libwhy3-ocaml-dev.install
+  * Capitalization in short description of libwhy3-ocaml-dev
+  * Drop build-dependency on autoconf
+
+ -- Ralf Treinen <treinen@debian.org>  Thu, 12 Jan 2017 16:56:47 +0100
+
+why3 (0.87.2-3) unstable; urgency=medium
+
+  * adapt to coq version 8.6:
+    - patch coq8.6: compile coq plugin with coq8.6. Thanks to Guillaume
+      Melquiond for the patch!
+    - add autoconf to build-dependency (needed since configure.in is patched)
+    - fix path of ocaml libdir in debian/libwhy3-ocaml-dev.install
+
+ -- Ralf Treinen <treinen@debian.org>  Tue, 03 Jan 2017 20:56:05 +0100
+
+why3 (0.87.2-2) sid; urgency=medium
+
+  * install why3lang.sty:
+    - add to why3.install
+    - add target directory to why3.dirs
+    - invoke dh --with tex
+    - add build-dependency on tex-common
+
+ -- Ralf Treinen <treinen@debian.org>  Wed, 21 Sep 2016 21:15:04 +0200
+
+why3 (0.87.2-1) unstable; urgency=medium
+
+  * new upstream release.
+    - d/rules: replace EMACS=no by --disable-emacs-compilation
+    - drop patch typos, applied by upstream
+    - drop patch drop-timestamp, applied by upstream. As a consequence,
+      we drop autoconf from d/rules and from build-dependencies
+  * add debian/tests/why3+coq
+
+ -- Ralf Treinen <treinen@debian.org>  Thu, 01 Sep 2016 19:21:22 +0200
+
+why3 (0.87.1-2) unstable; urgency=medium
+
+  * amended patch drop-timestamp: drop setting of BUILDDATE from configure.in
+    (closes: #831664). Invoke autoconf, and build-depend on autoconf,
+    since we patch configure.in
+
+ -- Ralf Treinen <treinen@debian.org>  Tue, 19 Jul 2016 19:05:11 +0200
+
+why3 (0.87.1-1) unstable; urgency=medium
+
+  * new upstream version
+    -dropped patch makefile-for-bytecode, since integrated by upstream
+  * added z3 prover:
+    - alternative dependency z3
+    - add package test with z3
+  * new patch drop-timestamp: do not include the build-timestamp in the
+    produced binaries.
+
+ -- Ralf Treinen <treinen@debian.org>  Wed, 08 Jun 2016 20:42:36 +0200
+
+why3 (0.87.0-3) unstable; urgency=medium
+
+  * debian/tests/*: run "why3 config --detect-provers" to make tests
+    work in a clean environment.
+
+ -- Ralf Treinen <treinen@debian.org>  Thu, 14 Apr 2016 19:00:49 +0200
+
+why3 (0.87.0-2) unstable; urgency=medium
+
+  * added a new binary package libwhy3-ocaml-dev
+    - install libraries in install-arch target of d/rules
+    - add d/*.install and d/*.dir files for this package
+    - call dh_ocaml with --nodefined-map=why3-coq:Why3 since this unit is
+      also exported by the library package
+  * d/rules: split into -arch and -indep rules
+  * d/control: split off Build-Depends-Indep
+  * build and install why tactic for coq:
+    - add build-dependency on libcoq-ocaml-dev
+    - add coq-tactic to d/why3-coq.install
+    - why3-coq: add dependencies ${ocaml:Depends} ${shlibs:Depends}
+  * build with menhirlib:
+    - add build-dependency on libmenhir-ocaml-dev
+    - call dh_ocaml with --nodefined-map=why3-coq:MenhirLib
+  * build with ocamlgraph:
+    - turn build-conflict with libocamlgraph-ocaml-dev into build-dependency
+    - call dh_ocaml with --nodefined-map=why3:Graph since this unit is
+      also exported by libocamlgraph-ocaml-dev.
+  * build with compression library:
+    - added build-dependency on libzip-ocaml-dev
+    - call dh_ocaml with --nodefined-map=why3-coq:Gzip,Zlib since these units
+      are also exported by libzip-ocaml
+  * build-dependency ocaml-nox: needs version >=3.11.2, according to
+    upstream instructions.
+  * added build-dependency libzarith-ocaml-dev
+  * added recommendation (alternative): spass
+  * added as-installed package tests:
+    - why3+alt-ergo
+    - why3+cvc3
+    - why3+spass
+  * update Vcs-* fields
+  * standards-version 3.9.8 (no change)
+  * patch typos: various typos found by lintian
+
+ -- Ralf Treinen <treinen@debian.org>  Wed, 13 Apr 2016 20:48:54 +0200
+
+why3 (0.87.0-1) unstable; urgency=low
+
+  * Initial Release (closes: #797696)
+
+ -- Ralf Treinen <treinen@debian.org>  Sun, 20 Mar 2016 18:44:54 +0100

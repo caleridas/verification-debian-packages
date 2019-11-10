@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# z3 produces Segmenation Faults on some architectures, which should not
+# make this integration test fail. 
+z3testfile=debian/tests/z3/gauss-Gauss-WP_parameter_gauss.smt2
+trap 'if [ $? -eq 139 ]; then exit 0; fi' CHLD
+z3 $z3testfile > /dev/null 2>&1
+trap '-' CHLD
+
+set -e
+
+indir=debian/tests/why
+why3 config --detect-provers > /dev/null 2>&1
+for infile in $indir/*.mlw
+do
+    why3 prove -P z3 $infile | grep -q "Valid"
+done

@@ -1,0 +1,53 @@
+#!/usr/bin/make -f
+
+BUILDDIR=debian/tmp
+include /usr/share/coq/coqvars.mk
+
+%:
+	dh $@ --with ocaml,tex
+
+override_dh_auto_configure: configure-stamp
+
+configure-stamp:
+	./autogen.sh &&	dh_auto_configure
+	touch configure-stamp
+
+build-arch: configure-stamp
+	dh_testdir
+	$(MAKE) all byte
+
+build-indep: configure-stamp
+	dh_testdir
+	$(MAKE) doc
+
+override_dh_auto_install:
+	# do nothing
+
+override_dh_install-arch: build-arch
+	$(MAKE) install install-lib DESTDIR=$(CURDIR)/$(BUILDDIR)
+	dh_install -a -XLICENSE
+	echo 'F:CoqABI=$(COQ_ABI)' >> debian/why3-coq.substvars
+
+override_dh_installexamples:
+	dh_installexamples
+	if [ -d debian/why3-examples/usr/share/doc/why3-examples/examples ]; \
+	then \
+	  find debian/why3-examples/usr/share/doc/why3-examples/examples \
+	    -name why3shapes.gz \
+	    -exec sh -c 'if [ $$(zcat {} | wc -c) -eq 0 ]; then \rm {}; fi' \;;\
+	fi
+
+override_dh_install-indep:
+	# do nothing
+
+override_dh_missing:
+	dh_missing --fail-missing
+
+override_dh_compress:
+	dh_compress -Xmanual.pdf
+
+override_dh_ocaml:
+	dh_ocaml --nodefined-map=why3-coq:Why3,MenhirLib,Gzip,Zlib,Zip \
+		--nodefined-map=why3:Graph
+override_dh_dwz:
+	dh_dwz --no-dwz-multifile

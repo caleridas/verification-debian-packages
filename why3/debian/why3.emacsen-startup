@@ -1,0 +1,4 @@
+;; -*-emacs-lisp-*-
+(autoload 'why3-mode "why3" "Major mode for editing why3 files." t)
+(add-to-list 'auto-mode-alist '("\\.\\(why\\|mlw\\)" . why3-mode))
+

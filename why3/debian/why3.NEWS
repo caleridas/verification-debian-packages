@@ -1,0 +1,23 @@
+why3 (1.2.0-1) unstable; urgency=medium
+
+  - The graphical interactive interface has been restored.
+
+ -- Ralf Treinen <treinen@debian.org>  Fri, 15 Feb 2019 08:21:59 +0100
+
+why3 (1.1.0-1) unstable; urgency=medium
+
+    The graphical interactive interface was dropped from the why3
+    package since building it requires an obsolete library.
+
+ -- Ralf Treinen <treinen@debian.org>  Mon, 22 Oct 2018 18:08:11 +0200
+
+why3 (1.0.0-1) unstable; urgency=medium
+
+    Release 1.0.0 of why3 has several changes in the WhyML language
+    which are summarized in Appendix A.1 of the manual.
+
+    Users may have to remove their ~/.why3.conf and run "why3 config" since
+    the location of the why standard library has changed.
+
+ -- Ralf Treinen <treinen@debian.org>  Wed, 27 Jun 2018 21:49:51 +0200
+

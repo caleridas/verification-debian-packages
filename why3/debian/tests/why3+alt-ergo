@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+indir=debian/tests/why
+why3 config --detect-provers > /dev/null 2>&1
+for infile in $indir/*.mlw
+do
+    why3 prove -P alt-ergo $infile | grep -q "Valid"
+done
