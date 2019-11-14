@@ -1,0 +1,3 @@
+?package(frama-c):needs="X11" section="Applications/Programming" \
+	title="Frama-C" command="/usr/bin/frama-c-gui" \
+	icon="/usr/share/pixmaps/frama-c.xpm"

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Frama-C
+Comment=Framework for source code analysis of software written in C
+Exec=frama-c-gui
+Type=Application
+Categories=Development;ComputerScience;IDE;GTK;
+OnlyShowIn=Development
+Terminal=false
+Icon=frama-c

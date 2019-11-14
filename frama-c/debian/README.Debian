@@ -1,0 +1,17 @@
+frama-c for Debian
+------------------
+
+Several files and directories are deleted from upstream's tarball:
+- ocamlgraph.tar.gz: exists in a Debian package.
+- why/: exists in a Debian package and exports the jessie library
+- doc/manuals/: Documentation without sources.
+- cil/doc/: Documentation without sources.
+- src/impact and src/security : Proprietary code.
+- tests/test/adpcm.c: File without license nor copyright
+
+The shell script “purify_tarball” is used to make a dfsg-compliant tarball.
+
+configure.in and Makefile.in are patched to use what's installed by
+Debian packages.
+
+ -- Mehdi Dogguy <dogguy@pps.jussieu.fr>  Tue, 12 May 2009 15:19:00 +0200

@@ -1,0 +1,78 @@
+Source: frama-c
+Section: devel
+Priority: optional
+Maintainer: Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>
+Uploaders: Mehdi Dogguy <mehdi@debian.org>
+Build-Depends:
+ debhelper (>= 7.0.50~),
+ ocaml-nox (>= 3.12.0~),
+ ocaml-best-compilers,
+ dh-ocaml (>= 0.9~),
+ graphviz,
+ autoconf,
+ libzarith-ocaml-dev,
+ ocaml-findlib,
+ libfindlib-ocaml-dev,
+ libwhy3-ocaml-dev,
+ liblablgtksourceview2-ocaml-dev (>= 2.14.0+dfsg-2~)
+Standards-Version: 3.9.8
+Homepage: http://frama-c.com/
+Vcs-Browser: https://anonscm.debian.org/git/pkg-ocaml-maint/packages/frama-c.git
+Vcs-Git: https://anonscm.debian.org/git/pkg-ocaml-maint/packages/frama-c.git
+
+Package: frama-c
+Architecture: any
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+ ${ocaml:Depends},
+ frama-c-base (= ${binary:Version}),
+ graphviz,
+ emacs | emacsen
+Description: Platform dedicated to the analysis of source code written in C
+ Frama-C gathers several analysis techniques in a single collaborative
+ framework, based on analyzers (called "plug-ins") that can build upon the
+ results computed by other analyzers in the framework.
+ .
+ Thanks to this approach, Frama-C provides sophisticated tools, including:
+   * an analyzer based on abstract interpretation (Value plug-in);
+   * a program proof framework based on weakest precondition calculus (WP plug-in);
+   * a program slicer (Slicing plug-in);
+   * a tool for verification of temporal (LTL) properties (Aoraï plug-in);
+   * several tools for code base exploration and dependency analysis
+     (plug-ins From, Impact, Metrics, Occurrence, Scope, etc.).
+  .
+ These plug-ins communicate between each other via the Frama-C API
+ and via ACSL (ANSI/ISO C Specification Language) properties.
+ .
+ This package provides the graphical user interface of Frama-c and depends
+ on frama-c-base.
+
+Package: frama-c-base
+Architecture: any
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+ ${ocaml:Depends},
+ libocamlgraph-ocaml-dev,
+ gcc,
+Recommends:
+ alt-ergo
+Description: Platform dedicated to the analysis of source code written in C (without gui)
+ Frama-C gathers several analysis techniques in a single collaborative
+ framework, based on analyzers (called "plug-ins") that can build upon the
+ results computed by other analyzers in the framework.
+ .
+ Thanks to this approach, Frama-C provides sophisticated tools, including:
+   * an analyzer based on abstract interpretation (Value plug-in);
+   * a program proof framework based on weakest precondition calculus (WP plug-in);
+   * a program slicer (Slicing plug-in);
+   * a tool for verification of temporal (LTL) properties (Aoraï plug-in);
+   * several tools for code base exploration and dependency analysis
+     (plug-ins From, Impact, Metrics, Occurrence, Scope, etc.).
+  .
+ These plug-ins communicate between each other via the Frama-C API
+ and via ACSL (ANSI/ISO C Specification Language) properties.
+ .
+ This package provides the library of Frama-c which is useful to build
+ plugins for Frama-c and the command-line tools.

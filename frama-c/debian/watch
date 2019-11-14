@@ -1,0 +1,3 @@
+version=3
+opts="dversionmangle=s/\+.*$//" \
+http://frama-c.com/download.html download/frama-c-.*-([0-9]+)\.tar\.gz

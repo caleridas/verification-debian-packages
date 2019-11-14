@@ -1,0 +1,7 @@
+	usr/lib/frama-c/*.*
+	usr/lib/frama-c/plugins/*.*
+	usr/lib/frama-c/plugins/top/*
+	usr/share
+	usr/bin/frama-c
+	usr/bin/frama-c-config
+OPT: 	usr/bin/frama-c.byte

@@ -1,0 +1,3 @@
+VERSION=19.1
+ORIGIN=https://github.com/Frama-C/Frama-C-snapshot.git
+TAG=19.1

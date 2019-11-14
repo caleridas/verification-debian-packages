@@ -1,0 +1,11 @@
+cil/ocamlutil/perfcount.c
+src/ltl_to_acsl/ltlparser.output
+src/ltl_to_acsl/promelaparser.output
+src/ltl_to_acsl/promelaparser_withexps.output
+config.log
+config.status
+config.sub
+config.guess
+.depend
+share/Makefile.config
+tests/wp/test_config_dev

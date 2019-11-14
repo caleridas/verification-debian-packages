@@ -1,0 +1,58 @@
+
+- Make sure (when frama-c team will start to use alt-ergo) that they
+  call 'alt-ergo' instead of 'ergo'.
+
+From: Mehdi Dogguy <dogguy@pps.jussieu.fr>
+Date: Wed, 20 May 2009 16:17:47 +0200
+Subject: [PATCH] Should call alt-ergo instead of ergo
+
+---
+ debian/patches/0007-Ergo-is-Alt-ergo.patch |   26 ++++++++++++++++++++++++++
+ debian/patches/series                      |    1 +
+ 2 files changed, 27 insertions(+), 0 deletions(-)
+ create mode 100644 debian/patches/0007-Ergo-is-Alt-ergo.patch
+
+diff --git a/debian/patches/0007-Ergo-is-Alt-ergo.patch b/debian/patches/0007-Ergo-is-Alt-ergo.patch
+new file mode 100644
+index 0000000..e1a3e81
+--- /dev/null
++++ b/debian/patches/0007-Ergo-is-Alt-ergo.patch
+@@ -0,0 +1,26 @@
++From: Mehdi Dogguy <dogguy@pps.jussieu.fr>
++Date: Wed, 20 May 2009 16:15:09 +0200
++Subject: [PATCH] Ergo is Alt-ergo
++
++---
++ src/logic/why_output.ml |    6 +++---
++ 1 files changed, 3 insertions(+), 3 deletions(-)
++
++diff --git a/src/logic/why_output.ml b/src/logic/why_output.ml
++index 92af1ad..18fa12d 100644
++--- a/src/logic/why_output.ml
+++++ b/src/logic/why_output.ml
++@@ -151,9 +151,9 @@ let prove basename prelude p =
++           else begin
++             let base = Filename.chop_extension why_file in
++             let ergo_file = (base^"_why.why") in
++-              Format.printf "[?] call 'ergo' on %s@." ergo_file;
++-              if Sys.command (sprintf "ergo %s" ergo_file) <> 0 then
++-                Format.printf "Could not run ergo.@."
+++              Format.printf "[?] call 'alt-ergo' on %s@." ergo_file;
+++              if Sys.command (sprintf "alt-ergo %s" ergo_file) <> 0 then
+++                Format.printf "Could not run alt-ergo.@."
++           end
++       end
++     else
++-- 
+diff --git a/debian/patches/series b/debian/patches/series
+index cf75bc6..0ed39b0 100644
+--- a/debian/patches/series
++++ b/debian/patches/series
+@@ -4,3 +4,4 @@
+ 0004-Using-graph.cm-a-xa-instead-of-graph.cm-o-x.patch
+ 0005-Full-path-for-ocamlgraph-cmo-otherwise-Makefile-will.patch
+ 0006-Do-not-install-non-existant-files.patch
++0007-Ergo-is-Alt-ergo.patch
+-- 
+1.6.2.4
+

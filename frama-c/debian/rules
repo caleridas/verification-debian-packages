@@ -1,0 +1,72 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+#export DH_VERBOSE=1
+
+include /usr/share/ocaml/ocamlvars.mk
+
+FRAMA_DIR=$(CURDIR)/debian/tmp
+FRAMA_GUI_DIR=$(CURDIR)/debian/frama-c/usr/lib/frama-c
+FRAMA_PLUGINS_DIR=$(CURDIR)/debian/frama-c-base/usr/lib/frama-c/plugins/
+
+override_dh_auto_configure:
+	mkdir -p lib/plugins
+	mkdir -p lib/gui
+	touch .depend .make-clean .make-clean-stamp
+	[ ! -f src/kernel/config.ml ] || cp src/kernel/config.ml src/kernel/config.ml.debian
+	autoconf
+	./configure $(CROSS) --prefix=/usr       \
+		--mandir=\$${prefix}/share/man   \
+		--infodir=\$${prefix}/share/info \
+		--datarootdir=\$${prefix}/share  \
+		--enable-verbosemake             \
+		CFLAGS="$(CFLAGS)"               \
+		LDFLAGS="-Wl,-z,defs"
+
+UNBUILT_FRAMA_GUI_LIBS = \
+	src/plugins/gui/dgraph_helper.yes.ml \
+	src/plugins/gui/dgraph_helper.no.ml \
+	src/plugins/gui/gtk_compat.2.ml \
+	src/plugins/gui/gtk_compat.3.ml \
+	src/plugins/gui/debug_manager.ml \
+
+FRAMA_GUI_LIBS=$(patsubst src/plugins/gui/%.ml, $(FRAMA_DIR)/usr/lib/frama-c/%, $(filter-out $(UNBUILT_FRAMA_GUI_LIBS) ,$(wildcard src/plugins/gui/*.ml)))
+FRAMA_PLUGINS=$(wildcard lib/plugins/*.cmx lib/plugins/*.cmxa)
+
+override_dh_auto_install:
+	$(MAKE) prefix=$(FRAMA_DIR)/usr FRAMAC_DATADIR=$(FRAMA_DIR)/usr/share/frama-c install
+	# Fix permission of .c and .h files (they don't have to be executable)
+	find debian/ -name "*.c" -or -name "*.h" -exec chmod a-x '{}' \;
+	# Install icons and desktop menu entry
+	cp debian/icons/frama-c.svg $(CURDIR)/debian/frama-c/usr/share/icons/hicolor/scalable/apps/
+	cp debian/icons/frama-c.xpm $(CURDIR)/debian/frama-c/usr/share/pixmaps/
+	cp debian/frama-c.desktop $(CURDIR)/debian/frama-c/usr/share/applications/
+	# Remove useless binaries
+	$(RM) -f $(CURDIR)/debian/frama-c/usr/bin/frama-c-gui.byte
+	$(RM) -f $(CURDIR)/debian/frama-c/usr/bin/ptests.byte
+	# Same file as frama-c.1. We use a symlink instead of copying the file twice
+	$(RM) -f $(FRAMA_DIR)/usr/share/man/man1/frama-c-gui.1
+	# On Bytecode architectures, bin/frama-c.byte is sam as bin/frama-c
+ifeq ($(OCAML_OPT_ARCH),)
+	$(RM) -f $(CURDIR)/debian/frama-c/usr/bin/frama-c.byte
+endif
+	# Move GUI related objects in the appropriate package
+	mkdir -p $(FRAMA_GUI_DIR)
+	mv $(patsubst %, %.cmo, $(FRAMA_GUI_LIBS))      $(FRAMA_GUI_DIR)
+	mv $(patsubst %, %.cmi, $(FRAMA_GUI_LIBS))      $(FRAMA_GUI_DIR)
+ifeq ($(OCAML_HAVE_OCAMLOPT),yes)
+	mv $(patsubst %, %.cmx, $(FRAMA_GUI_LIBS))      $(FRAMA_GUI_DIR)
+	mv $(patsubst %, %.o, $(FRAMA_GUI_LIBS))        $(FRAMA_GUI_DIR)
+endif
+
+override_dh_auto_clean:
+	touch .depend
+	[ ! -f src/kernel/config.ml.debian ] || mv src/kernel/config.ml.debian src/kernel/config.ml
+	[ ! -f Makefile -o ! -f share/Makefile.config ] || $(MAKE) clean
+	$(RM) -rf lib .depend
+
+override_dh_ocaml:
+	dh_ocaml --nodefined-map=frama-c-base:Big_int_Z,Z,Q
+
+%:
+	dh $@ --with ocaml

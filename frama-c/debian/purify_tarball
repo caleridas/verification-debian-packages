@@ -1,0 +1,33 @@
+#!/bin/sh
+
+set -e
+
+ORIG=$1
+CURDIR=`pwd`
+WORKDIR=`dirname $ORIG`
+ORIGFILE=`basename $ORIG`
+DESTDIR=`basename $ORIG .tar.gz`
+
+cd $WORKDIR
+
+safe_remove ()
+{
+  rm -rf $1 || echo $1 not found
+}
+
+if test -d $DESTDIR; then
+  echo "Directory $DESTDIR already exists"
+  exit 1
+fi
+
+tar xzf $ORIGFILE
+
+for i in why ocamlgraph ocamlgraph.tar.gz doc/manuals \
+	src/impact src/security cil/doc tests/test/adpcm.c; do
+	safe_remove $DESTDIR/$i;
+done
+
+tar czf $DESTDIR.orig.tar.gz $DESTDIR/
+safe_remove $DESTDIR/
+
+cd $CURDIR

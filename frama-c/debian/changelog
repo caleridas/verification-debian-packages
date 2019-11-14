@@ -1,0 +1,404 @@
+frama-c (19.1-Potassium) UNRELEASED; urgency=medium
+
+  * Package latest version
+
+ -- Helge Bahmann <hcb@chaoticmind.net>  Sun, 10 Nov 2019 17:13:43 +0100
+
+frama-c (20161101+silicon+dfsg-5) unstable; urgency=medium
+
+  * Add Breaks/Replaces frama-c-base (<= 20140301+neon+dfsg-3) to
+    frama-c (Closes: #851104)
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Sun, 15 Jan 2017 13:00:55 +0100
+
+frama-c (20161101+silicon+dfsg-4) unstable; urgency=medium
+
+  * Fix FTBFS by avoiding use of PWD variable in Makefile
+    - Update patch 0005-Value.cmo-needs-LoopAnalysis.cmo.patch
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Sun, 01 Jan 2017 17:28:41 +0100
+
+frama-c (20161101+silicon+dfsg-3) unstable; urgency=medium
+
+  * Fix typo in Vcs-Browser field
+  * Install frama-c-config utility in frama-c-base
+  * Clean up content of filtered files from debian/gbp.conf
+  * Avoid double linking of LoopAnalysis.cmo
+  * ocaml-findlib is not needed for frama-c-base. It has a runtime dependency
+    on libfindlib-ocaml which is enough.
+  * Re-enable Impact plugin by dropping --disable-impact flag for configure
+    script. The plugin used to be non open-source, which is not the case
+    anymore.
+  * Drop configure flag --disable-security as it became useless.
+  * configure script is now able to find zarith correctly. The use of
+    --enable-zarith=<path> is not needed anymore. Thus, dropping it.
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Sun, 01 Jan 2017 00:37:33 +0100
+
+frama-c (20161101+silicon+dfsg-2) unstable; urgency=medium
+
+  * Disable apron
+  * Add ocaml-findlib as a dependency for frama-c-base
+  * Fix build on bytecode architectures
+    - add patch debian/patches/0005-Add-a-section-for-LoopAnalysis-plugin.patch
+    - add patch debian/patches/0006-gui.byte-needs-TARGETS_GUI_BYTE-only.patch
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Wed, 21 Dec 2016 14:17:38 +0100
+
+frama-c (20161101+silicon+dfsg-1) unstable; urgency=medium
+
+  * New upstream release
+  * Refresh patches
+    - Drop patch 0004-Don-t-fail-during-the-configure-on-bytecode-architec.patch
+      (not needed anymore)
+    - Add patch 0004-Use-ocamlfind-package-lablgtk2-gnome.gnomecanvas.patch
+  * Add libapron-ocaml-dev to Build-Depends
+  * Do not recommend why and libwhy-coq which are not part of Stretch
+  * Install plugins/top in frama-c-base
+  * Enhance package description
+  * Remove obsolete Breaks/Replaces statements
+  * Use canonical and secure URIs for Vcs-{Browser,Git} fields
+  * Bump Standards-Version to 3.9.8, no changes required
+  * Bump DH compat to 9
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Tue, 13 Dec 2016 00:32:12 +0100
+
+frama-c (20151002+magnesium+dfsg-1) unstable; urgency=medium
+
+  * New upstream release
+    - Refresh patches.
+    - Add ocaml-findlib and libfindlib-ocaml-dev to Build-Depends
+      since they became a hard requirement.
+  * Fix variable FRAMA_GUI_LIBS in debian/rules: "gui" directory
+    moved from "src" to "src/plugins".
+  * Fix ocaml-dangling-cmx and ocaml-dangling-cmxa.
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Sun, 24 Jan 2016 00:33:56 +0100
+
+frama-c (20150201+sodium+dfsg-2) unstable; urgency=medium
+
+  * frama-c package must Breaks/Replaces older frama-c-base package
+    (<< 20150201+sodium+dfsg-1~) since files were moved from the
+    latter to the former (Closes: #797695).
+  * Do not try to install plugins on bytecode architectures since they
+    are provided only on native architectures. This is needed to fix
+    FTBFS on bytecode architectures.
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Tue, 01 Sep 2015 19:34:32 +0000
+
+frama-c (20150201+sodium+dfsg-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #797473).
+    - Refresh patches.
+    - Drop 0004-Port-to-OCamlgraph-1.8.5.patch: Integrated upstream.
+  * Bump Standards-Version to 3.9.6, no changes needed.
+  * Disable DH_VERBOSE in d/rules.
+  * Install GUI plugins and modules using GTK2 in frama-c package
+    only (Closes: #792612).
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Mon, 31 Aug 2015 22:18:00 +0000
+
+frama-c (20140301+neon+dfsg-3) unstable; urgency=medium
+
+  * Add a call to autoconf prior to configure.
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Tue, 29 Apr 2014 19:16:49 +0200
+
+frama-c (20140301+neon+dfsg-2) unstable; urgency=medium
+
+  * The new configure script tries to compile a test program linking
+    against the OCamlgraph library. Unfortunately, upstream only tests
+    the native case and fails for the bytecode case. Since, the OCamlgraph
+    library is tested elsewhere, I'm adding a patch to disable that check.
+    This resolves observed FTBFS on bytecode architectures (mips and mipsel).
+    - Add 0005-Don-t-fail-during-the-configure-on-bytecode-architec.patch
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Mon, 28 Apr 2014 21:28:44 +0200
+
+frama-c (20140301+neon+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Refresh patches
+    - Remove 0005-Fix-compilation-with-OCaml-4.01.0.patch
+    - Add 0004-Port-to-OCamlgraph-1.8.5.patch (Closes: #746091)
+  * Bump build-dependency of Ocamlgraph to 1.8.5~.
+  * Pass --enabe-zarith to configure script instead of patching it.
+    - Remove 0004-Fix-auto-detection-of-ocaml-zarith.patch.
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Sun, 27 Apr 2014 21:41:47 +0200
+
+frama-c (20130601+fluorine3+dfsg-2) unstable; urgency=low
+
+  * Team upload
+  * debian/patches:
+    + Fix compilation with OCaml 4.01.0 (Closes: #731637)
+
+ -- Stéphane Glondu <glondu@debian.org>  Sun, 08 Dec 2013 12:25:21 +0100
+
+frama-c (20130601+fluorine3+dfsg-1) unstable; urgency=low
+
+  * New upstream release (Closes: #714124)
+    - Remove 0001-Add-ocamlgraph-to-DYN_-O-B-LINKFLAGS.patch, fixed
+      upstream
+    - Remove 0002-Accept-ocamlgraph-1.8.patch, fixed upstream
+    - Remove 0006-Patchlevel2-for-Nitrogen-20111001.patch, integrated
+    - Add 0004-Fix-auto-detection-of-ocaml-zarith.patch
+    - Require ocamlgraph (>= 1.8.3~) on build.
+  * Add libzarith-ocaml-dev to Build-Depends.
+  * Add autoconf to Build-Depends.
+  * Call dh_ocaml with --nodefined-map=frama-c-base:Big_int_Z,Z,Q, modules
+    already declared by ocaml-zarith.
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Mon, 25 Nov 2013 15:02:35 +0100
+
+frama-c (20111001+nitrogen+dfsg-3) unstable; urgency=low
+
+  * Include patchlevel2 for Nitrogen 20111001.
+    - add debian/patches/0006-Patchlevel2-for-Nitrogen-20111001.patch
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Fri, 06 Jan 2012 09:30:44 +0100
+
+frama-c (20111001+nitrogen+dfsg-2) unstable; urgency=low
+
+  * add 0005-Disable-CHMOD_RO-invocations.patch.
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Tue, 03 Jan 2012 15:24:55 +0100
+
+frama-c (20111001+nitrogen+dfsg-1) unstable; urgency=low
+
+  * New upstream release (Closes: #652257).
+  * Update patches:
+    - remove 0001-Value-Analysis-Carbon-patchlevel-1.patch
+    - remove 0002-Fix-for-issue-727.patch
+    - rebase 0003-Add-ocamlgraph-to-DYN_-O-B-LINKFLAGS.patch
+    - update 0004-Accept-ocamlgraph-1.8.patch
+    - add 0003-Fix-spelling-error-in-binary.patch
+    - add 0004-Use-bin-cp-instead-of-usr-bin-install.patch
+  * Bump minimum requirement for ocamlgraph to 1.8.
+  * Bump Standards-Version to 3.9.2, no changes needed.
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Mon, 02 Jan 2012 17:29:13 +0100
+
+frama-c (20110201+carbon+dfsg-2) unstable; urgency=low
+
+  * Add "-I +ocamlgraph" to DYN_{O,B}LINKFLAGS, needed for plugins to link.
+    - add 0003-Add-ocamlgraph-to-DYN_-O-B-LINKFLAGS.patch
+    - add libocamlgraph-ocaml-dev to frama-c-base's runtime dependencies.
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Mon, 25 Apr 2011 12:03:31 +0200
+
+frama-c (20110201+carbon+dfsg-1) unstable; urgency=low
+
+  * New upstream release:
+    - Update copyright file.
+    - Remove all patches, integrated by upstream.
+    - Add patches:
+      + 0001-Value-Analysis-Carbon-patchlevel-1.patch
+      + 0002-Fix-for-issue-727.patch
+  * Fix Categories field in frama-c.desktop (Closes: #610432) (LP: #613853).
+  * No need to exclude custom bytecode binaries when running dh_strip.
+    (thanks to patch applied in OCaml >= 3.12.0-5)
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Sat, 23 Apr 2011 18:47:13 +0200
+
+frama-c (20100401+boron+dfsg-5) unstable; urgency=low
+
+  [ Stéphane Glondu ]
+  * Fix versioned build-deps to ensure smoother backports
+
+  [ Mehdi Dogguy ]
+  * Add 0011-Fix-some-minor-memory-leaks.patch
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Tue, 05 Oct 2010 18:49:13 +0200
+
+frama-c (20100401+boron+dfsg-4) unstable; urgency=low
+
+  * Add 0009-unrollType-in-handle_signed_overflow from upstream.
+  * Add 0010-More-spelling-fixes.patch
+  * Convert to 3.0 (quilt) source format.
+  * Bump standards version to 3.9.0.
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Fri, 16 Jul 2010 13:53:55 +0200
+
+frama-c (20100401+boron+dfsg-3) unstable; urgency=low
+
+  * Add some patches
+    - 0007-Fix-cpp-command-arguments.patch
+    - 0008-Fix-ai-ival.ml-filter_ge.patch
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Mon, 14 Jun 2010 23:36:37 +0200
+
+frama-c (20100401+boron+dfsg-2) unstable; urgency=low
+
+  * Make the configure script accept OCamlgraph 1.5 (Closes: #580090)
+  * Build-depend on ocaml (>= 3.11.1-3~) and dh-ocaml (>= 0.9~).
+  * Add a debian/source/format file (keep the package in 1.0 format,
+    for now).
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Tue, 01 Jun 2010 20:18:44 +0200
+
+frama-c (20100401+boron+dfsg-1) unstable; urgency=low
+
+  * New upstream release:
+    - Remove some patches integrated by upstream:
+      + 0001-Use-GSourceView2.patch
+      + 0003-Do-not-install-native-Kernel-modules-on-bytecode-arc.patch
+      + 0004-temp_file-changed-in-OCaml-3.11.2.patch
+    - Add some patches:
+      + 0002-.make-ocamlgraph-no-op-for-non-local-ocamlgraph
+      + 0003-Fix-build-on-bytecode-only-architectures.patch
+      + 0004-Fix-some-typos.patch
+      + 0005-Don-t-modify-system-files.patch
+      + 0006-Fix-build-on-bytecode-only-architectures.patch
+    - Update:
+      + 0001-Fix-hyphen-used-as-minus-sign-and-a-typo.patch
+    - Bump ocamlgraph minimum version to 1.4
+  * Set Priority to optional
+  * Set filter-pristine-tar in debian/gbp.conf
+  * Fix watch file
+  * Update 'Homepage' field
+  * Bump Standards Version to 3.8.4, no changes needed.
+  * Update copyright file
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Tue, 27 Apr 2010 16:04:49 +0200
+
+frama-c (20090902+beryllium+dfsg-5) unstable; urgency=low
+
+  * Build-Depend on libocamlgraph-viewer-ocaml-dev (Closes: #575371)
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Thu, 25 Mar 2010 11:14:43 +0100
+
+frama-c (20090902+beryllium+dfsg-4) unstable; urgency=low
+
+  * Make it compile with OCaml 3.11.2 (Closes: #569260)
+    - Add 0004-temp_file-changed-in-OCaml-3.11.2.patch
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Thu, 11 Feb 2010 20:57:17 +0100
+
+frama-c (20090902+beryllium+dfsg-3) unstable; urgency=low
+
+  * Fix FTBFS on bytecode architectures
+    - 0003-Do-not-install-native-Kernel-modules-on-bytecode-architectures
+  * Add Graphviz to build-depends
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Fri, 22 Jan 2010 11:59:37 +0100
+
+frama-c (20090902+beryllium+dfsg-2) unstable; urgency=low
+
+  * Fix installability problem by installing frama-c-gui.1 only once.
+  * Remove empty dirs
+  * Fix hyphen-used-as-minus-sign
+  * Fix short description of frama-c-base
+  * Set section to « devel »
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Sun, 17 Jan 2010 19:33:00 +0100
+
+frama-c (20090902+beryllium+dfsg-1) unstable; urgency=low
+
+  * New upstream release
+    + Remove 0001-Fix-weak-pattern-matching-in-dynlink_lower_311_byte..patch
+      (fixed upstream)
+    + Remove 0003-Add-dGraphView.cmo-when-linking.patch (fixed upstream)
+  * Update copyright file
+  * Remove libjessie-ocaml-dev from build-deps (Why is not needed anymore
+    to build Frama-C).
+  * Run dh using "--with ocaml" to trigger dh-ocaml sequence
+  * Build-depend on ocamlgraph 1.3
+  * Add a new binary package: frama-c-base
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Sun, 10 Jan 2010 22:50:18 +0100
+
+frama-c (20090901+beryllium+dfsg-2) unstable; urgency=low
+
+  * Fix watch file
+  * Build-depend on lablgtk2 (>= 2.14.0+dfsg-2) (Closes: #541963).
+    - Add a patch: 0004-Use-GSourceView2.patch
+  * Use new features of dh-ocaml
+  * Build-dep on ocamlgraph (>> 1.2+debian)
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Wed, 02 Dec 2009 00:08:35 +0100
+
+frama-c (20090901+beryllium+dfsg-1) unstable; urgency=low
+
+  * Change the version number to reflect the codename in the version string
+  * New Upstream Version
+    + Fixes the issues related the static Jessie plugin. Thus, removing:
+      0004-Add-JCCM-O-X-to-BYTE-OPT-_LIBS-when-linking-statical.patch
+      (Closes: #544404).
+    + Provides toc_head.htm and toc_tail.htm
+    + Fixes linking problem for the viewer. Thus, removing:
+      0002-Do-not-add-GRAPH_GUICMO-to-BYTE_GUI_LIBS.patch
+    + Removing 0006-Do-not-install-non-existant-files.patch (now integrated
+      upstream)
+  * Add some patches:
+    + Fix weak pattern-matching in dynlink_lower_311_byte.ml, fixes FTBFS
+      on non-native architectures (Closes: #544833).
+      0001-Fix-weak-pattern-matching-in-dynlink_lower_311_byte..patch
+    + Make the Jessie plugin compile with Jc 2.19:
+      0002-Make-Jessie-plugin-use-Jc-from-Why-2.19.patch
+    + Fix linking problem for the viewer (add dGraphView.cmo):
+      0003-Add-dGraphView.cmo-when-linking.patch
+  * Bump libocamlgraph-ocaml-dev version from 1.1 to 1.2+debian in build
+    dependencies.
+  * Don't strip bytecode binaries since they are compiled with -custom
+  * Recommends alt-ergo and libwhy-coq
+  * Remove useless runtime dependency libocamlgraph-ocaml-dev
+  * Install data needed by frama-c in /usr/share/frama-c
+  * Make some additional links to follow default upstream installation:
+    + /usr/share/frama-c/why      -> /usr/share/why/
+    + /usr/share/frama-c/caduceus -> /usr/share/caduceus
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Wed, 09 Sep 2009 17:30:41 +0200
+
+frama-c (20090601~beta1+dfsg-1) unstable; urgency=low
+
+  * New Upstream Version
+  * Use Debian mail address, Remove DMUA
+  * Remove patches integrated upstream:
+    + 0001-Gui_includes-variable-should-include-ocamlgraph-too.patch
+    + 0002-Make-the-jessie-plugin-compatible-with-why-2.18.patch
+    + 0003-Correctly-detect-jessie-plugin.patch
+    + 0004-Using-graph.cm-a-xa-instead-of-graph.cm-o-x.patch
+    + 0007-Add-a-variable-for-ENABLE_GUI-in-Makefile.in.patch
+    + 0005-Full-path-for-ocamlgraph-cmo-otherwise-Makefile-will.patch
+  * Refresh patch:
+    + 0006-Do-not-install-non-existant-files.patch
+  * Remove debian/man: Manpage integrated upstream
+  * Build-depend on jessie library 2.19
+  * Remove patch rule which is now implemented by dom-save-patches (now
+    part of the package dh-ocaml).
+  * Do not include uselessly the file /usr/share/quilt/quilt.make in
+    debian/rules
+  * Build-depend on debhelper 7.0.50 since we use overrides
+  * Bump Standards-Version to 3.8.3
+    + Add a README.source
+  * Build-depending on a particular revision of libocamlgraph-ocaml-dev
+    is not needed
+  * Install frama-c, frama-c.byte and frama-c-gui on native-architectures
+    and frama-c and frama-c-gui on non-natives ones.
+  * Update README.Debian
+  * Update copyright file
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Fri, 28 Aug 2009 14:53:52 +0200
+
+frama-c (20081201.dfsg-3) unstable; urgency=low
+
+  * Fix long description (Closes: #533158)
+  * Tighten build dependencies versions to ease OCaml 3.11.1 transition
+  * Rebuild with OCaml 3.11.1
+
+ -- Mehdi Dogguy <dogguy@pps.jussieu.fr>  Fri, 10 Jul 2009 20:07:12 +0200
+
+frama-c (20081201.dfsg-2) unstable; urgency=low
+
+  * Do not install Journal_loader.cmxs on non-native archs, fixes FTBFS on
+    non-native archs.
+
+ -- Mehdi Dogguy <dogguy@pps.jussieu.fr>  Wed, 03 Jun 2009 08:19:25 +0200
+
+frama-c (20081201.dfsg-1) unstable; urgency=low
+
+  * Initial release (Closes: #484234)
+  * Codename: Lithium
+
+ -- Mehdi Dogguy <dogguy@pps.jussieu.fr>  Fri, 24 Apr 2009 23:47:35 +0200
