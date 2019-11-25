@@ -1,0 +1,84 @@
+commit 9c67f22a5ae3ab990e11eed47796e4df739f42eb
+Author: Helge Bahmann <hcb@chaoticmind.net>
+Date:   Sun Nov 24 14:04:48 2019 +0100
+
+    Support DESTDIR for installation
+    
+    Suppert DESTDIR variable in installation. This allows to configure for
+    installation in normal sysroot, but divert for packaging scripts.
+
+diff --git a/Makefile b/Makefile
+index 0247b688..36e20d32 100644
+--- a/Makefile
++++ b/Makefile
+@@ -40,6 +40,8 @@ CP=cp
+ VPATH=$(DIRS)
+ GPATH=$(DIRS)
+ 
++DESTDIR=
++
+ # Flocq
+ 
+ FLOCQ=\
+@@ -238,24 +240,24 @@ depend1: $(FILES) exportclight/Clightdefs.v
+ 	@$(COQDEP) $^ > .depend
+ 
+ install:
+-	install -d $(BINDIR)
+-	install -m 0755 ./ccomp $(BINDIR)
+-	install -d $(SHAREDIR)
+-	install -m 0644 ./compcert.ini $(SHAREDIR)
+-	install -d $(MANDIR)/man1
+-	install -m 0644 ./doc/ccomp.1 $(MANDIR)/man1
++	install -d $(DESTDIR)$(BINDIR)
++	install -m 0755 ./ccomp $(DESTDIR)$(BINDIR)
++	install -d $(DESTDIR)$(SHAREDIR)
++	install -m 0644 ./compcert.ini $(DESTDIR)$(SHAREDIR)
++	install -d $(DESTDIR)$(MANDIR)/man1
++	install -m 0644 ./doc/ccomp.1 $(DESTDIR)$(MANDIR)/man1
+ 	$(MAKE) -C runtime install
+ ifeq ($(CLIGHTGEN),true)
+-	install -m 0755 ./clightgen $(BINDIR)
++	install -m 0755 ./clightgen $(DESTDIR)$(BINDIR)
+ endif
+ ifeq ($(INSTALL_COQDEV),true)
+-	install -d $(COQDEVDIR)
++	install -d $(DESTDIR)$(COQDEVDIR)
+ 	for d in $(DIRS); do \
+-          install -d $(COQDEVDIR)/$$d && \
+-          install -m 0644 $$d/*.vo $(COQDEVDIR)/$$d/; \
++          install -d $(DESTDIR)$(COQDEVDIR)/$$d && \
++          install -m 0644 $$d/*.vo $(DESTDIR)$(COQDEVDIR)/$$d/; \
+ 	done
+-	install -m 0644 ./VERSION $(COQDEVDIR)
+-	@(echo "To use, pass the following to coq_makefile or add the following to _CoqProject:"; echo "-R $(COQDEVDIR) compcert") > $(COQDEVDIR)/README
++	install -m 0644 ./VERSION $(DESTDIR)$(COQDEVDIR)
++	@(echo "To use, pass the following to coq_makefile or add the following to _CoqProject:"; echo "-R $(COQDEVDIR) compcert") > $(DESTDIR)$(COQDEVDIR)/README
+ endif
+ 
+ 
+diff --git a/runtime/Makefile b/runtime/Makefile
+index 27ad6e8c..8fe00934 100644
+--- a/runtime/Makefile
++++ b/runtime/Makefile
+@@ -70,16 +70,16 @@ clean::
+ 
+ ifeq ($(strip $(HAS_RUNTIME_LIB)),true)
+ install::
+-	install -d $(LIBDIR)
+-	install -m 0644 $(LIB) $(LIBDIR)
++	install -d $(DESTDIR)$(LIBDIR)
++	install -m 0644 $(LIB) $(DESTDIR)$(LIBDIR)
+ else
+ install::
+ endif
+ 
+ ifeq ($(strip $(HAS_STANDARD_HEADERS)),true)
+ install::
+-	install -d $(LIBDIR)/include
+-	install -m 0644 $(INCLUDES) $(LIBDIR)/include
++	install -d $(DESTDIR)$(LIBDIR)/include
++	install -m 0644 $(INCLUDES) $(DESTDIR)$(LIBDIR)/include
+ else
+ install::
+ endif

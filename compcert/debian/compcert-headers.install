@@ -1,0 +1,7 @@
+usr/lib/compcert/include/float.h
+usr/lib/compcert/include/stdnoreturn.h
+usr/lib/compcert/include/stdalign.h
+usr/lib/compcert/include/stdarg.h
+usr/lib/compcert/include/varargs.h
+usr/lib/compcert/include/stdbool.h
+usr/lib/compcert/include/stddef.h

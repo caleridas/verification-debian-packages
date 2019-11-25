@@ -1,0 +1,11 @@
+usr/lib/compcert/coq/flocq/*/*.vo
+usr/lib/compcert/coq/cparser/*/*.vo
+usr/lib/compcert/coq/cparser/*.vo
+usr/lib/compcert/coq/backend/*.vo
+usr/lib/compcert/coq/VERSION
+usr/lib/compcert/coq/cfrontend/*.vo
+usr/lib/compcert/coq/common/*.vo
+usr/lib/compcert/coq/exportclight/*.vo
+usr/lib/compcert/coq/driver/*.vo
+usr/lib/compcert/coq/lib/*.vo
+usr/lib/compcert/coq/README

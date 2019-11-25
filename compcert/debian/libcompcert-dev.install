@@ -1,0 +1,3 @@
+#!/usr/bin/dh-exec
+
+usr/lib/compcert/libcompcert.a => usr/lib/x86_64-linux-gnu/libcompcert.a

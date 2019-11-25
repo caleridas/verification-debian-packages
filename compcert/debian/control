@@ -1,0 +1,47 @@
+Source: compcert
+Priority: optional
+Maintainer: Helge Bahmann <hcb@chaoticmend.net>
+Build-Depends: debhelper (>= 11), autotools-dev, dh-exec, coq (>= 8.9.1)
+Standards-Version: 4.1.3
+Section: devel
+Homepage: <insert the upstream URL, if relevant>
+#Vcs-Browser: https://salsa.debian.org/debian/compcert
+#Vcs-Git: https://salsa.debian.org/debian/compcert.git
+
+Package: libcompcert-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends}
+Description: CompCert executable build library
+ Library to be linked into programs compiled by CompCert.
+
+Package: compcert
+Depends: libcompcert-dev (= ${binary:Version}), compcert-headers (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Architecture: any
+Multi-Arch: same
+Description: The CompCert certified compiler
+ The CompCert compiler itself
+
+Package: compcert-headers
+Architecture: all
+Description: The CompCert certified compiler, headers
+ The header files provided by CompCert.
+
+Package: compcert-dev
+Architecture: all
+Depends: ${misc:Depends}, coq (>= 8.9.1)
+Description: The CompCert certified compiler, development files
+ Development files for CompCert.
+
+Package: compcert-x86-dev
+Architecture: all
+Depends: ${misc:Depends}, compcert-x86-dev (= ${binary:Version}), coq (>= 8.9.1)
+Description: The CompCert certified compiler, development files
+ Development files for CompCert, x86 target.
+
+Package: compcert-clightgen
+Architecture: any
+Multi-Arch: same
+Description: Translate C to Coq files.
+ Translate C to Coq files.

@@ -1,0 +1,5 @@
+compcert (3.5-1) unstable; urgency=medium
+
+  * Package CompCert for Debian
+
+ -- Helge Bahmann <hcb@chaoticmind.net>  Mon, 25 Nov 2019 07:22:01 +0100
