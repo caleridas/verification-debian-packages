@@ -1,0 +1,5 @@
+frama-clang (0.0.7-1) unstable; urgency=medium
+
+  * Initial release
+
+ -- Helge Bahmann <hcb@chaoticmind.net>  Mon, 18 Nov 2019 17:29:11 +0100

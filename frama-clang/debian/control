@@ -1,0 +1,13 @@
+Source: frama-clang
+Section: unknown
+Priority: optional
+Maintainer: Helge Bahmann <hcb@chaoticmind.net>
+Build-Depends: debhelper (>= 11), autotools-dev, frama-c (>=19.1), llvm (>=7.0)
+Standards-Version: 4.1.3
+
+Package: frama-clang
+Architecture: all
+Depends: ${misc:Depends}
+Description: Clang plugin for frama-c to process C++
+ This is an (experimental) plugin for frama-c to translate C++ into its
+ intermediate representation.
