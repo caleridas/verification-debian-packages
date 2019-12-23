@@ -1,0 +1,5 @@
+flocq (3.2.0-1) unstable; urgency=medium
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Helge Bahmann <helge@rohan>  Sun, 10 Nov 2019 11:22:46 +0100
